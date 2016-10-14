@@ -3,7 +3,7 @@ import configureApp from '../src/server'
 
 const app = configureApp()
 
-app.listen(3000, error => {
+app.listen(3000, (error) => {
   if (error) {
     throw error
   }

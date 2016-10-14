@@ -1,10 +1,14 @@
 import { match } from 'redux-router/lib/server'
 import configureStore from '../store/configureStore'
+import { getServicePlans } from '../services'
 import page from '../page'
 
 export default function render(env) {
-  return (req, res, next) => {
+  return async (req, res, next) => {
+    const servicePlans = await getServicePlans()
     const store = configureStore({})
+
+    store.dispatch({ type: 'LOAD_SERVICE_PLANS', servicePlans })
 
     store.dispatch(match(req.url, (error, redirectLocation, routerState) => {
       if (routerState) {

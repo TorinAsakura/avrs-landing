@@ -5,9 +5,12 @@
     "react"
   ],
   "plugins": [
-    ["quantum/lib/babel/plugin", {
-      "rootPath": "./src",
+    ["elementum-tools/lib/babel/plugin", {
+      "alias": {
+        "AvrsLanding": "src",
+        "AvrsUI": "node_modules/avrs-ui/src"
+      },
     }],
     "transform-runtime"
-  ]
+  ],
 }

@@ -1,3 +1,5 @@
+/* eslint-disable react/no-danger */
+/* eslint-disable jsx-a11y/html-has-lang */
 import React, { Component } from 'react'
 import { renderToString } from 'react-dom/server'
 import Helmet from 'react-helmet'
@@ -36,7 +38,7 @@ class Page extends Component {
           <script
             dangerouslySetInnerHTML={{ __html: `window.initialState=${initialState};` }}
           />
-          <script src='/index.js'></script>
+          <script src='/index.js' />
         </body>
       </html>
     )
@@ -48,7 +50,7 @@ export default function render(store, env) {
   const initialState = JSON.stringify(store.getState())
 
   const markup = renderToString(
-    <Root store={store} />
+    <Root store={store} />,
   )
 
   const page = renderToString(
@@ -56,7 +58,7 @@ export default function render(store, env) {
       dev={dev}
       markup={markup}
       initialState={initialState}
-    />
+    />,
   )
 
   return `
