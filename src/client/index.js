@@ -1,5 +1,6 @@
 import React from 'react'
 import { render } from 'react-dom'
+import 'flex-layouts/lib/flex-layouts.css'
 import configureStore from '../common/store/configureStore'
 import Root from '../common/containers/Root'
 import './index.css'
@@ -8,7 +9,7 @@ const store = configureStore(window.initialState)
 
 render(
   <Root store={store} />,
-  document.getElementById('container')
+  document.getElementById('container'),
 )
 
 if (module.hot) {
@@ -17,7 +18,7 @@ if (module.hot) {
 
     render(
       <Root store={store} />,
-      document.getElementById('container')
+      document.getElementById('container'),
     )
   })
 }

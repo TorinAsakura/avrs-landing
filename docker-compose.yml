@@ -8,6 +8,14 @@ services:
     ports:
       - "8500:80"
 
+  install:
+    image: node
+    working_dir: /workspace
+    volumes:
+      - ./:/workspace
+      - ./.netrc:/root/.netrc
+    entrypoint: npm install
+
   npm:
     image: node
     working_dir: /workspace

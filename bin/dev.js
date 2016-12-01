@@ -14,7 +14,7 @@ app.use(hotMiddleware(compiler))
 
 app = configureApp(app)
 
-app.listen(3030, error => {
+app.listen(3030, (error) => {
   if (error) {
     throw error
   }

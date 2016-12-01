@@ -5,7 +5,7 @@ import rootReducer from '../reducers'
 import routes from '../routes'
 
 const enhancer = compose(
-  reduxReactRouter({ routes, createHistory })
+  reduxReactRouter({ routes, createHistory }),
 )
 
 export default function configureStore(initialState) {

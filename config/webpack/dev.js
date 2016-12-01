@@ -1,7 +1,8 @@
-import path from 'path'
 import webpack from 'webpack'
+import nested from 'jss-nested'
+import camelCase from 'jss-camel-case'
 import autoprefixer from 'autoprefixer'
-import CssResolvePlugin from 'quantum/lib/webpack/css-resolve-plugin'
+import CssResolvePlugin from 'elementum-tools/lib/webpack/css-resolve-plugin'
 
 export const entry = [
   'babel-polyfill',
@@ -11,31 +12,16 @@ export const entry = [
 ]
 
 export const output = {
-  path: path.join(__dirname, '..', '..', 'dist'),
   filename: 'index.js',
 }
 
-export const postcss = [
-  autoprefixer({
-    browsers: [
-      '>2%',
-      'last 2 versions',
-    ],
-  }),
-]
-
 export const module = {
-  loaders: [
+  rules: [
     {
       test: /\.js?$/,
-      loader: 'quantum/lib/webpack/loader',
-      exclude: /node_modules/,
-    },
-    {
-      test: /\.js?$/,
-      loader: 'babel',
-      exclude: /node_modules/,
-      query: {
+      loader: 'babel-loader',
+      exclude: /node_modules\/(?!avrs-ui)/,
+      options: {
         babelrc: false,
         presets: [
           'es2015',
@@ -43,8 +29,12 @@ export const module = {
           'react',
         ],
         plugins: [
-          ['quantum/lib/babel/plugin', {
-            rootPath: './src',
+          ['elementum-tools/lib/babel/plugin', {
+            alias: {
+              AvrsLanding: 'src',
+              AvrsUI: 'node_modules/avrs-ui/src',
+            },
+            extract: true,
           }],
           'react-hot-loader/babel',
           'transform-runtime',
@@ -53,11 +43,24 @@ export const module = {
     },
     {
       test: /\.css$/,
-      loaders: ['style-loader', 'css-loader', 'postcss-loader'],
+      use: [
+        'style-loader',
+        'css-loader',
+        'postcss-loader',
+      ],
+    },
+    {
+      test: /\.jss$/,
+      use: [
+        'style-loader',
+        'css-loader',
+        'postcss-loader',
+        'jss-loader',
+      ],
     },
     {
       test: /\.(png|jpg|svg|ttf|eot|woff|woff2)$/,
-      loader: 'file?name=[path][name].[ext]',
+      loader: 'file-loader?name=[name].[ext]',
     },
   ],
 }
@@ -65,4 +68,22 @@ export const module = {
 export const plugins = [
   new CssResolvePlugin(),
   new webpack.HotModuleReplacementPlugin(),
+  new webpack.LoaderOptionsPlugin({
+    options: {
+      jssLoader: {
+        plugins: [
+          nested(),
+          camelCase(),
+        ],
+      },
+      postcss: {
+        plugins: autoprefixer({
+          browsers: [
+            '>2%',
+            'last 2 versions',
+          ],
+        }),
+      },
+    },
+  }),
 ]
