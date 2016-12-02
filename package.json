@@ -4,9 +4,9 @@
   "description": "Aversis System Landing Repository",
   "main": "index.js",
   "scripts": {
-    "dev": "node bin/exec.js dev",
-    "build": "rimraf ./public && node bin/exec.js build",
-    "start": "node bin/exec.js server",
+    "dev": "node --harmony-async-await bin/exec.js dev",
+    "build": "rimraf ./public && node --harmony-async-await bin/exec.js build",
+    "start": "node --harmony-async-await bin/exec.js server",
     "lint": "eslint bin config src -f table"
   },
   "repository": {
@@ -23,8 +23,8 @@
     "apollo-client": "^0.5.7",
     "avrs-ui": "git+https://github.com/AtlantisUnited/avrs-ui.git#feature/landing",
     "babel-cli": "^6.16.0",
-    "babel-plugin-transform-runtime": "^6.15.0",
     "babel-preset-es2015": "^6.16.0",
+    "babel-preset-node7": "^1.4.0",
     "babel-preset-react": "^6.16.0",
     "babel-preset-stage-0": "^6.16.0",
     "elementum": "^0.2.1",
@@ -37,7 +37,7 @@
     "react": "^15.3.0",
     "react-dom": "^15.3.0",
     "react-helmet": "^3.1.0",
-    "react-hot-loader": "^3.0.0-beta.5",
+    "react-hot-loader": "^3.0.0-beta.6",
     "react-redux": "^4.4.5",
     "react-router": "^2.6.1",
     "react-youtube": "^7.2.0",

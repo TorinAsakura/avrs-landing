@@ -1,7 +1,6 @@
 {
   "presets": [
-    "es2015",
-    "stage-0",
+    "node7",
     "react"
   ],
   "plugins": [
@@ -11,6 +10,5 @@
         "AvrsUI": "node_modules/avrs-ui/src"
       },
     }],
-    "transform-runtime"
   ],
 }

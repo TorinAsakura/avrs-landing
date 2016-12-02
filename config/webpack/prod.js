@@ -37,7 +37,6 @@ export const module = {
             },
             extract: true,
           }],
-          'transform-runtime',
         ],
       },
     },

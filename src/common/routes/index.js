@@ -11,6 +11,7 @@ import TermsOfUse from '../pages/LegalInformation/components/TermsOfUse'
 import Company from '../pages/LegalInformation/components/Company'
 import Confidentiality from '../pages/LegalInformation/components/Confidentiality'
 import MarketingMaterials from '../pages/MarketingMaterials/components/MarketingMaterials'
+import Products from '../pages/products/containers/Products'
 
 export default (
   <Route path='/'>
@@ -26,6 +27,7 @@ export default (
         <Route path='confidentiality' component={Confidentiality} />
       </Route>
       <Route path='marketing-materials' component={MarketingMaterials} />
+      <Route path='products' component={Products} />
     </Route>
   </Route>
 )

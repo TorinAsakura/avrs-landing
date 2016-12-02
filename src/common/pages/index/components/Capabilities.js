@@ -4,7 +4,7 @@ import { Text, Space } from 'avrs-ui/src/text'
 import { Section } from 'avrs-ui/src/section'
 import { Profit, Exclusive, Referal } from 'avrs-ui/src/promo'
 import { Divider } from 'avrs-ui/src/divider'
-import { Link } from 'avrs-ui/src/link'
+import { Link, RouteLink } from 'avrs-ui/src/link'
 
 const Capabilities = () => (
   <Section
@@ -175,11 +175,11 @@ const Capabilities = () => (
                   </Layout>
                   <Layout basis='15px' />
                   <Layout>
-                    <Link>
+                    <RouteLink to='/products'>
                       <Text color='blue400'>
                         Посмотреть
                       </Text>
-                    </Link>
+                    </RouteLink>
                     <Space />
                     <Text color='blue400'>
                       &#10095;
