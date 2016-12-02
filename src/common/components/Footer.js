@@ -106,12 +106,14 @@ const Footer = ({ onRegister }) => (
               </Layout>
               <Layout basis='4px' />
               <Layout>
-                <Text
-                  size='xsmall'
-                  color='white'
-                >
-                  Поддержка
-                </Text>
+                <RouteLink to='/support'>
+                  <Text
+                    size='xsmall'
+                    color='white'
+                  >
+                    Поддержка
+                  </Text>
+                </RouteLink>
               </Layout>
               <Layout basis='4px' />
               <Layout>

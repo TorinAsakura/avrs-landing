@@ -19,26 +19,32 @@ export const module = {
   rules: [
     {
       test: /\.js?$/,
-      loader: 'babel-loader',
       exclude: /node_modules\/(?!avrs-ui)/,
-      options: {
-        babelrc: false,
-        presets: [
-          'es2015',
-          'stage-0',
-          'react',
-        ],
-        plugins: [
-          ['elementum-tools/lib/babel/plugin', {
-            alias: {
-              AvrsLanding: 'src',
-              AvrsUI: 'node_modules/avrs-ui/src',
-            },
-            extract: true,
-          }],
-          'react-hot-loader/babel',
-        ],
-      },
+      use: [
+        {
+          loader: 'react-hot-loader/webpack',
+        },
+        {
+          loader: 'babel-loader',
+          options: {
+            babelrc: false,
+            presets: [
+              ['es2015', { modules: false }],
+              'stage-0',
+              'react',
+            ],
+            plugins: [
+              ['elementum-tools/lib/babel/plugin', {
+                alias: {
+                  AvrsLanding: 'src',
+                  AvrsUI: 'node_modules/avrs-ui/src',
+                },
+                extract: true,
+              }],
+            ],
+          },
+        },
+      ],
     },
     {
       test: /\.css$/,
@@ -59,13 +65,18 @@ export const module = {
     },
     {
       test: /\.(png|jpg|svg|ttf|eot|woff|woff2)$/,
-      loader: 'file-loader?name=[name].[ext]',
+      loader: 'file-loader?name=/[name].[ext]',
     },
   ],
 }
 
+export const resolve = {
+  plugins: [
+    new CssResolvePlugin(),
+  ],
+}
+
 export const plugins = [
-  new CssResolvePlugin(),
   new webpack.HotModuleReplacementPlugin(),
   new webpack.LoaderOptionsPlugin({
     options: {

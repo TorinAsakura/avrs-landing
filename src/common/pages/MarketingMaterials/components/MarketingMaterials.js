@@ -38,13 +38,13 @@ const MarketingMaterials = () => (
                     <Layout>
                       <Column>
                         <Layout>
-                          <GhostButton rounded>
+                          <GhostButton rounded color='blue'>
                             Скачать PDF (12 Mb.)
                           </GhostButton>
                         </Layout>
                         <Layout basis='12px' />
                         <Layout>
-                          <GhostButton rounded>
+                          <GhostButton rounded color='blue'>
                             Посмотреть
                           </GhostButton>
                         </Layout>
@@ -80,13 +80,13 @@ const MarketingMaterials = () => (
                     <Layout>
                       <Column>
                         <Layout>
-                          <GhostButton rounded>
+                          <GhostButton rounded color='blue'>
                             Скачать PDF (12 Mb.)
                           </GhostButton>
                         </Layout>
                         <Layout basis='12px' />
                         <Layout>
-                          <GhostButton rounded>
+                          <GhostButton rounded color='blue'>
                             Посмотреть
                           </GhostButton>
                         </Layout>
@@ -120,7 +120,7 @@ const MarketingMaterials = () => (
                     </Layout>
                     <Layout basis='12px' />
                     <Layout>
-                      <GhostButton rounded>
+                      <GhostButton rounded color='blue'>
                         Скачать PDF (12 Mb.)
                       </GhostButton>
                     </Layout>
@@ -152,7 +152,7 @@ const MarketingMaterials = () => (
                     </Layout>
                     <Layout basis='12px' />
                     <Layout>
-                      <GhostButton rounded>
+                      <GhostButton rounded color='blue'>
                         Скачать PDF (12 Mb.)
                       </GhostButton>
                     </Layout>

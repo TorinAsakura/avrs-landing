@@ -51,7 +51,7 @@ const Header = ({ light, onLogin, onRegister }) => (
         <Layout>
           <GhostButton
             rounded
-            color={light ? 'white' : null}
+            color={light ? 'white' : 'blue'}
             onClick={onLogin}
           >
             Войти

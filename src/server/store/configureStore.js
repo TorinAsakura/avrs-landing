@@ -1,11 +1,11 @@
 import { createStore } from 'redux'
 import { reduxReactRouter } from 'redux-router/lib/server'
 import { createMemoryHistory as createHistory } from 'history'
-import rootReducer from '../../common/reducers'
-import routes from '../../common/routes'
+import createReducers from '../../common/reducers'
+import getRoutes from '../../common/routes'
 
 export default function configureStore(initialState = {}) {
-  const store = reduxReactRouter({ routes, createHistory })(createStore)(rootReducer, initialState)
+  const store = reduxReactRouter({ getRoutes, createHistory })(createStore)(createReducers(), initialState)
 
   return store
 }

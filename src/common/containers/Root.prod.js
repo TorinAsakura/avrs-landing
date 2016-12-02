@@ -1,6 +1,6 @@
 import React from 'react'
 import { Provider } from 'react-redux'
-import { ReduxRouter } from 'redux-router'
+import ReduxRouter from './ReduxRouter'
 
 const Root = ({ store }) => (
   <Provider store={store}>

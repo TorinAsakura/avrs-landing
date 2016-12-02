@@ -11,7 +11,7 @@ const periodByDays = {
 
 const groupByType = (items) => { // eslint-disable-line arrow-body-style
   return items.reduce((result, plan) => {
-    const type = plan.id.substr(1)
+    const type = plan.type
 
     if (!result[type]) {
       result[type] = {} // eslint-disable-line no-param-reassign

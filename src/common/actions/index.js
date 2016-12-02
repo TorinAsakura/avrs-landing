@@ -4,7 +4,7 @@ import * as servicePlansActions from '../constants/servicePlans'
 const redirectToCabinet = (hash) => {
   const { protocol, host } = window.location
 
-  window.location.assign(`${protocol}//cabinet.${host}/#/${hash}`)
+  window.location.assign(`${protocol}//cabinet.${host}/${hash}`)
 }
 
 export function login() {

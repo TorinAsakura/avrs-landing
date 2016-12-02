@@ -8,7 +8,7 @@ const initialState = {
 }
 
 const getActive = (servicePlans, type, period) => {
-  const [active] = servicePlans.filter(plan => plan.id.includes(type) && plan.period === period)
+  const [active] = servicePlans.filter(plan => plan.type === type && plan.period === period)
 
   return active
 }

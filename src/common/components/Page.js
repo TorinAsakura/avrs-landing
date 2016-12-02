@@ -1,11 +1,12 @@
 import React from 'react'
-import { Row, Layout, Wrapper } from 'flex-layouts'
+import { Column, Row, Layout, Wrapper } from 'flex-layouts'
 import { Condition } from 'avrs-ui/src/condition'
 import Header from './Header'
 import Footer from './Footer'
 import Modals from './Modals'
+import Messages from './Messages'
 
-const Page = ({ children, header = true, query, onCloseModal, onLogin, onRegister }) => (
+const Page = ({ children, header = true, query, messages, onCloseModal, onLogin, onRegister, onDismiss }) => (
   <Wrapper>
     <Row>
       <Layout>
@@ -22,6 +23,17 @@ const Page = ({ children, header = true, query, onCloseModal, onLogin, onRegiste
           />
         </Layout>
       </Condition>
+      <Layout>
+        <Column>
+          <Layout grow={1} />
+          <Layout basis='360px'>
+            <Messages
+              messages={messages}
+              onDismiss={onDismiss}
+            />
+          </Layout>
+        </Column>
+      </Layout>
       <Layout>
         {children}
       </Layout>

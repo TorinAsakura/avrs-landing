@@ -12,8 +12,9 @@ import Company from '../pages/LegalInformation/components/Company'
 import Confidentiality from '../pages/LegalInformation/components/Confidentiality'
 import MarketingMaterials from '../pages/MarketingMaterials/components/MarketingMaterials'
 import Products from '../pages/products/containers/Products'
+import Support from '../pages/support/containers/Support'
 
-export default (
+export default () => (
   <Route path='/'>
     <IndexRoute component={Main} />
     <Route component={Page}>
@@ -28,6 +29,7 @@ export default (
       </Route>
       <Route path='marketing-materials' component={MarketingMaterials} />
       <Route path='products' component={Products} />
+      <Route path='support' component={Support} />
     </Route>
   </Route>
 )
