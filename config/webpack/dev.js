@@ -37,7 +37,6 @@ export const module = {
             extract: true,
           }],
           'react-hot-loader/babel',
-          'transform-runtime',
         ],
       },
     },
