@@ -1,7 +1,7 @@
 import React from 'react'
 import { Provider } from 'react-redux'
-import { ReduxRouter } from 'redux-router'
 import { AppContainer } from 'react-hot-loader'
+import ReduxRouter from './ReduxRouter'
 
 const Root = ({ store }) => (
   <AppContainer>

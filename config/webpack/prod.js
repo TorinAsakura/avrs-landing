@@ -25,7 +25,7 @@ export const module = {
       options: {
         babelrc: false,
         presets: [
-          'es2015',
+          ['es2015', { modules: false }],
           'stage-0',
           'react',
         ],
@@ -63,18 +63,21 @@ export const module = {
     },
     {
       test: /\.(png|jpg|svg|ttf|eot|woff|woff2)$/,
-      loader: 'file-loader?name=[name].[ext]',
+      loader: 'file-loader?name=/[name].[ext]',
     },
   ],
 }
 
+export const resolve = {
+  plugins: [
+    new CssResolvePlugin(),
+  ],
+}
+
 export const plugins = [
-  new CssResolvePlugin(),
   new ExtractTextPlugin('index.css'),
   new webpack.DefinePlugin({
-    'process.env': {
-      NODE_ENV: JSON.stringify('production'),
-    },
+    'process.env.NODE_ENV': JSON.stringify('production'),
   }),
   new webpack.optimize.UglifyJsPlugin(),
   new webpack.LoaderOptionsPlugin({

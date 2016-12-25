@@ -64,25 +64,25 @@ const ServicePlan = ({ month, quarter, halfYear, year }) => (
         align='center'
         color='black400'
       >
-        {month.cpu.from}
+        {month.cpu}
       </Cell>
       <Cell
         align='center'
         color='black400'
       >
-        {quarter.cpu.from}
+        {quarter.cpu}
       </Cell>
       <Cell
         align='center'
         color='black400'
       >
-        {halfYear.cpu.from}
+        {halfYear.cpu}
       </Cell>
       <Cell
         align='center'
         color='black400'
       >
-        {year.cpu.from}
+        {year.cpu}
       </Cell>
     </Row>
     <Row>

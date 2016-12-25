@@ -50,7 +50,7 @@ const ServicePlans = ({ active, period, onChangePlan, onChangePeriod }) => (
             <Column>
               <Layout basis='200px'>
                 <PromoServicePlan
-                  active={active.id.includes('basis')}
+                  active={active.type === 'basis'}
                   time={10}
                   type='basis'
                   name='Базис'
@@ -63,7 +63,7 @@ const ServicePlans = ({ active, period, onChangePlan, onChangePeriod }) => (
               <Layout basis='25px' />
               <Layout basis='200px'>
                 <PromoServicePlan
-                  active={active.id.includes('standard')}
+                  active={active.type === 'standard'}
                   time={12}
                   type='standard'
                   name='Стандарт'
@@ -76,7 +76,7 @@ const ServicePlans = ({ active, period, onChangePlan, onChangePeriod }) => (
               <Layout basis='25px' />
               <Layout basis='200px'>
                 <PromoServicePlan
-                  active={active.id.includes('premium')}
+                  active={active.type === 'premium'}
                   time={15}
                   type='premium'
                   name='Премиум'
@@ -89,7 +89,7 @@ const ServicePlans = ({ active, period, onChangePlan, onChangePeriod }) => (
               <Layout basis='25px' />
               <Layout basis='200px'>
                 <PromoServicePlan
-                  active={active.id.includes('business')}
+                  active={active.type === 'business'}
                   time={20}
                   hideRightBorder
                   type='business'

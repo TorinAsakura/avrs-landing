@@ -6,22 +6,17 @@ export default async () => {
     query: gql`
       query {
         servicePlans {
-          id
           type
-          name
+          period
           time
           price
-          period
           profitability
           profitabilityPerDay
           profitabilityPerHour
           profit
           amount
           memory
-          cpu {
-            from
-            to
-          }
+          cpu
         }
       }
     `,
