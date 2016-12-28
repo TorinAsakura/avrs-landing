@@ -23,6 +23,7 @@
     "apollo-client": "^0.5.25",
     "avrs-ui": "git+https://github.com/AtlantisUnited/avrs-ui.git",
     "babel-cli": "^6.16.0",
+    "babel-plugin-transform-require-ignore": "0.0.2",
     "babel-preset-es2015": "^6.16.0",
     "babel-preset-node7": "^1.4.0",
     "babel-preset-react": "^6.16.0",

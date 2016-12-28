@@ -5,7 +5,7 @@ import { Section } from 'avrs-ui/src/section'
 import { Button } from 'avrs-ui/src/button'
 import Network from './network/Network'
 
-const Connect = () => (
+const Connect = ({ onRegister }) => (
   <Section color='blue'>
     <Network>
       <Row>
@@ -46,6 +46,7 @@ const Connect = () => (
                     shadow
                     rounded
                     color='green'
+                    onClick={onRegister}
                   >
                     Стать участником
                   </Button>

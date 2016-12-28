@@ -2,11 +2,11 @@ import React from 'react'
 import { Column, Row, Layout } from 'flex-layouts'
 import { LogoWhiteWithText } from 'avrs-ui/src/logo'
 import { Button, GhostButton } from 'avrs-ui/src/button'
-import { Text } from 'avrs-ui/src/text'
 import { HeaderSection } from 'avrs-ui/src/section'
+import { Text } from 'avrs-ui/src/text'
 import Head from '../../../components/Header'
 
-const Header = ({ onLogin, onRegister }) => (
+const Header = ({ onLogin, onRegister, onGoToAbout }) => (
   <HeaderSection>
     <Row>
       <Layout>
@@ -68,6 +68,7 @@ const Header = ({ onLogin, onRegister }) => (
             <GhostButton
               rounded
               color='white'
+              onClick={onGoToAbout}
             >
               Узнать подробнее
             </GhostButton>

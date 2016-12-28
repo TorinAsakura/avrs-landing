@@ -10,5 +10,8 @@
         "AvrsUI": "node_modules/avrs-ui/src"
       },
     }],
+    ["babel-plugin-transform-require-ignore", {
+      "extensions": [".css"]
+    }]
   ],
 }

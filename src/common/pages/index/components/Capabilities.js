@@ -4,7 +4,7 @@ import { Text, Space } from 'avrs-ui/src/text'
 import { Section } from 'avrs-ui/src/section'
 import { Profit, Exclusive, Referal } from 'avrs-ui/src/promo'
 import { Divider } from 'avrs-ui/src/divider'
-import { Link, RouteLink } from 'avrs-ui/src/link'
+import { RouteLink } from 'avrs-ui/src/link'
 
 const Capabilities = () => (
   <Section
@@ -49,6 +49,7 @@ const Capabilities = () => (
                       weight='light'
                       size='normal'
                       color='black400'
+                      lineHeight='extended'
                     >
                       Мы предлагаем возможность получения дохода от сдачи в аренду
                       свободного вычислительного ресурса своего компьютера.
@@ -57,11 +58,11 @@ const Capabilities = () => (
                   </Layout>
                   <Layout basis='15px' />
                   <Layout>
-                    <Link>
+                    <RouteLink to='/service-plans'>
                       <Text color='blue400'>
                         Тарифы
                       </Text>
-                    </Link>
+                    </RouteLink>
                     <Space />
                     <Text color='blue400'>
                       &#10095;
@@ -105,6 +106,7 @@ const Capabilities = () => (
                       size='normal'
                       color='black400'
                       weight='light'
+                      lineHeight='extended'
                     >
                       Суть нашей реферальной системы заключается в ее многоуровности.
                       Это означает, что получать прибыль можно не только с клиентов, которых пригласили вы.
@@ -112,11 +114,11 @@ const Capabilities = () => (
                   </Layout>
                   <Layout basis='15px' />
                   <Layout>
-                    <Link>
+                    <RouteLink to='/about/referal'>
                       <Text color='blue400'>
                         Комиссионные
                       </Text>
-                    </Link>
+                    </RouteLink>
                     <Space />
                     <Text color='blue400'>
                       &#10095;
@@ -168,6 +170,7 @@ const Capabilities = () => (
                       size='normal'
                       color='black400'
                       weight='light'
+                      lineHeight='extended'
                     >
                       Мы даем возможность получения и использования эксклюзивных продуктов,
                       предлагаемых компанией Aversis Sytems.

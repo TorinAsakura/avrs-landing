@@ -10,13 +10,14 @@ import Capabilities from '../components/Capabilities'
 import Connect from '../components/Connect'
 import ServicePlans from './ServicePlans'
 
-const Main = ({ query, onLogin, onRegister }) => (
+const Main = ({ query, onLogin, onRegister, onGoToAbout }) => (
   <Page header={false}>
     <Row>
       <Layout>
         <Header
           onLogin={onLogin}
           onRegister={onRegister}
+          onGoToAbout={onGoToAbout}
         />
       </Layout>
       <Layout basis='100px' />
@@ -33,7 +34,9 @@ const Main = ({ query, onLogin, onRegister }) => (
         <ServicePlans />
       </Layout>
       <Layout>
-        <Connect />
+        <Connect
+          onRegister={onRegister}
+        />
       </Layout>
     </Row>
   </Page>
@@ -43,8 +46,9 @@ export default connect(
   state => ({
     query: state.router.location.query,
   }),
-  () => ({
+  (dispatch, { router }) => ({
     onLogin: () => login(),
     onRegister: () => register(),
+    onGoToAbout: () => router.push('/about'),
   }),
 )(Main)

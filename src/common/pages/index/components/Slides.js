@@ -4,7 +4,7 @@ import { Text, Space } from 'avrs-ui/src/text'
 import { Section } from 'avrs-ui/src/section'
 import { Carousel, Screen } from 'avrs-ui/src/carousel'
 import { About, Benefit, Advantage, Target } from 'avrs-ui/src/promo'
-import { Link, RouteLink } from 'avrs-ui/src/link'
+import { RouteLink } from 'avrs-ui/src/link'
 
 const Slides = () => (
   <Section id='about'>
@@ -41,14 +41,14 @@ const Slides = () => (
                       <Layout>
                         <Column>
                           <Layout>
-                            <Link>
+                            <RouteLink to='/about'>
                               <Text
                                 color='blue400'
                                 size='small'
                               >
                                 Узнать подробнее
                               </Text>
-                            </Link>
+                            </RouteLink>
                             <Space />
                             <Text
                               color='blue400'
@@ -119,14 +119,14 @@ const Slides = () => (
                       <Layout>
                         <Column>
                           <Layout>
-                            <Link>
+                            <RouteLink to='/about'>
                               <Text
                                 color='blue400'
                                 size='small'
                               >
                                 Узнать подробнее
                               </Text>
-                            </Link>
+                            </RouteLink>
                             <Space />
                             <Text
                               color='blue400'
@@ -197,14 +197,14 @@ const Slides = () => (
                       <Layout>
                         <Column>
                           <Layout>
-                            <Link>
+                            <RouteLink to='/about'>
                               <Text
                                 color='blue400'
                                 size='small'
                               >
                                 Узнать подробнее
                               </Text>
-                            </Link>
+                            </RouteLink>
                             <Space />
                             <Text
                               color='blue400'
@@ -275,14 +275,14 @@ const Slides = () => (
                       <Layout>
                         <Column>
                           <Layout>
-                            <Link>
+                            <RouteLink to='/about'>
                               <Text
                                 color='blue400'
                                 size='small'
                               >
                                 Узнать подробнее
                               </Text>
-                            </Link>
+                            </RouteLink>
                             <Space />
                             <Text
                               color='blue400'

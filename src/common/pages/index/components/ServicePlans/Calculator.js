@@ -4,10 +4,10 @@ import { Text, Space } from 'avrs-ui/src/text'
 import { Slider } from 'avrs-ui/src/slider'
 
 const names = {
-  Basis: 'Базис',
-  Standard: 'Стандарт',
-  Premium: 'Премиум',
-  Business: 'Бизнес',
+  basis: 'Базис',
+  standart: 'Стандарт',
+  premium: 'Премиум',
+  business: 'Бизнес',
 }
 
 const Calculator = ({ plan, period = 90, onChange }) => (
@@ -32,7 +32,7 @@ const Calculator = ({ plan, period = 90, onChange }) => (
         color='blue400'
         size='small'
       >
-        {names[plan.name]}
+        {names[plan.type]}
       </Text>
       <Space />
       <Text

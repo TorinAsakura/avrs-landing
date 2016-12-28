@@ -10,10 +10,8 @@ export default async () => {
           period
           time
           price
-          profitability
           profitabilityPerDay
           profitabilityPerHour
-          profit
           amount
           memory
           cpu

@@ -63,14 +63,14 @@ const ServicePlans = ({ active, period, onChangePlan, onChangePeriod }) => (
               <Layout basis='25px' />
               <Layout basis='200px'>
                 <PromoServicePlan
-                  active={active.type === 'standard'}
+                  active={active.type === 'standart'}
                   time={12}
-                  type='standard'
+                  type='standart'
                   name='Стандарт'
                   price='До 0,25 €'
                   priceUnit='в час'
                   timeUnit='в сутки'
-                  onClick={() => onChangePlan('standard')}
+                  onClick={() => onChangePlan('standart')}
                 />
               </Layout>
               <Layout basis='25px' />
