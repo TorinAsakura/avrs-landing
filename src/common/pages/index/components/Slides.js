@@ -96,7 +96,7 @@ const Slides = () => (
               <Layout>
                 <Column>
                   <Layout basis='40px' />
-                  <Layout basis='450px'>
+                  <Layout basis='470px'>
                     <Row>
                       <Layout>
                         <Text size='large'>
@@ -110,9 +110,10 @@ const Slides = () => (
                           weight='light'
                           color='gray200'
                         >
-                          Каждый компьютер получит только свою задачу.
-                          Для этого специальный софт, принимает небольшие задания,
-                          обрабатывает и отправляет полученные результаты обратно.
+                          Объединяя ежедневно тысячи компьютеров «Аверсис»
+                          уже сегодня предоставляет ресурс в разработке новейших технологий,
+                          помогает решить сложные задачи в здравоохранении,
+                          осуществляет добычу крипто валют и поддерживает глобальные виртуальные ресурсы в интернете.
                         </Text>
                       </Layout>
                       <Layout basis='18px' />
@@ -159,7 +160,7 @@ const Slides = () => (
                       </Layout>
                     </Row>
                   </Layout>
-                  <Layout basis='40px' />
+                  <Layout basis='20px' />
                   <Layout>
                     <Benefit />
                   </Layout>
@@ -174,7 +175,7 @@ const Slides = () => (
               <Layout>
                 <Column>
                   <Layout basis='40px' />
-                  <Layout basis='426px'>
+                  <Layout basis='490px'>
                     <Row>
                       <Layout>
                         <Text size='large'>
@@ -188,9 +189,9 @@ const Slides = () => (
                           weight='light'
                           color='gray200'
                         >
-                          Aversis Sytems является официальной компанией.
-                          Руководитель - John Appleseed, человек с высокой репутацией в сфере бизнеса.
-                          Наш бизнес строится на отсутствии рисков для наших клиентов ...
+                          Компания Aversis Systems предлагает возможность
+                          получения дохода от сдачи в аренду свободного вычислительного ресурса своего компьютера,
+                          возможность использования эксклюзивных продуктов.
                         </Text>
                       </Layout>
                       <Layout basis='18px' />
@@ -237,7 +238,7 @@ const Slides = () => (
                       </Layout>
                     </Row>
                   </Layout>
-                  <Layout basis='115px' />
+                  <Layout basis='45px' />
                   <Layout>
                     <Advantage />
                   </Layout>

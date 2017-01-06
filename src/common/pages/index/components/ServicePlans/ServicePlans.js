@@ -5,7 +5,7 @@ import { Section } from 'avrs-ui/src/section'
 import { PromoServicePlan } from 'avrs-ui/src/ServicePlans'
 import Calculator from './Calculator'
 
-const ServicePlans = ({ active, period, onChangePlan, onChangePeriod }) => (
+const ServicePlans = ({ active, period, basis, standart, premium, business, onChangePlan, onChangePeriod }) => (
   <Section id='service-plans'>
     <Column>
       <Layout grow={1} />
@@ -51,12 +51,8 @@ const ServicePlans = ({ active, period, onChangePlan, onChangePeriod }) => (
               <Layout basis='200px'>
                 <PromoServicePlan
                   active={active.type === 'basis'}
-                  time={10}
-                  type='basis'
                   name='Базис'
-                  price='До 0,14 €'
-                  priceUnit='в час'
-                  timeUnit='в сутки'
+                  {...basis}
                   onClick={() => onChangePlan('basis')}
                 />
               </Layout>
@@ -64,12 +60,8 @@ const ServicePlans = ({ active, period, onChangePlan, onChangePeriod }) => (
               <Layout basis='200px'>
                 <PromoServicePlan
                   active={active.type === 'standart'}
-                  time={12}
-                  type='standart'
                   name='Стандарт'
-                  price='До 0,25 €'
-                  priceUnit='в час'
-                  timeUnit='в сутки'
+                  {...standart}
                   onClick={() => onChangePlan('standart')}
                 />
               </Layout>
@@ -77,12 +69,8 @@ const ServicePlans = ({ active, period, onChangePlan, onChangePeriod }) => (
               <Layout basis='200px'>
                 <PromoServicePlan
                   active={active.type === 'premium'}
-                  time={15}
-                  type='premium'
                   name='Премиум'
-                  price='До 0,59 €'
-                  priceUnit='в час'
-                  timeUnit='в сутки'
+                  {...premium}
                   onClick={() => onChangePlan('premium')}
                 />
               </Layout>
@@ -90,13 +78,8 @@ const ServicePlans = ({ active, period, onChangePlan, onChangePeriod }) => (
               <Layout basis='200px'>
                 <PromoServicePlan
                   active={active.type === 'business'}
-                  time={20}
-                  hideRightBorder
-                  type='business'
                   name='Бизнес'
-                  price='До 0,74 €'
-                  priceUnit='в час'
-                  timeUnit='в сутки'
+                  {...business}
                   onClick={() => onChangePlan('business')}
                 />
               </Layout>

@@ -114,7 +114,7 @@ const Capabilities = () => (
                   </Layout>
                   <Layout basis='15px' />
                   <Layout>
-                    <RouteLink to='/about/referal'>
+                    <RouteLink to='/about/carrier'>
                       <Text color='blue400'>
                         Комиссионные
                       </Text>
@@ -173,7 +173,7 @@ const Capabilities = () => (
                       lineHeight='extended'
                     >
                       Мы даем возможность получения и использования эксклюзивных продуктов,
-                      предлагаемых компанией Aversis Sytems.
+                      предлагаемых компанией Aversis Systems.
                     </Text>
                   </Layout>
                   <Layout basis='15px' />
