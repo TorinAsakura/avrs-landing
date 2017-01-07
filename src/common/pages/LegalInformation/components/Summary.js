@@ -2,7 +2,7 @@ import React from 'react'
 import { StyleSheet } from 'elementum'
 import { Row, Layout } from 'flex-layouts'
 import { Text, Space } from 'avrs-ui/src/text'
-import { PointerLink } from 'avrs-ui/src/link'
+import { PointerLink, RouteLink } from 'avrs-ui/src/link'
 
 const styles = StyleSheet.create({
   self: {
@@ -37,7 +37,7 @@ const Summary = () => (
           Конфиденциальность
         </PointerLink>
       </Layout>
-      <Layout grow={1} />
+      <Layout basis='140px' />
       <Layout>
         <div>
           <Text
@@ -47,13 +47,15 @@ const Summary = () => (
           >
             Для получения дополнительной информации или справки посетите страницу
           </Text>
-          <Text
-            size='small'
-            color='blue400'
-            weight='light'
-          >
-            службы поддержки
-          </Text>
+          <RouteLink to='/support'>
+            <Text
+              size='small'
+              color='blue400'
+              weight='light'
+            >
+              службы поддержки
+            </Text>
+          </RouteLink>
           <Space />
           <Text
             size='small'

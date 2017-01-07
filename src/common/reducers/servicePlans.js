@@ -1,7 +1,7 @@
 import * as actions from '../constants/servicePlans'
 
 const initialState = {
-  type: 'standard',
+  type: 'standart',
   period: 90,
   active: null,
   items: [],

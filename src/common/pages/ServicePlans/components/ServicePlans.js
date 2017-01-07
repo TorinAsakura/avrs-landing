@@ -4,7 +4,7 @@ import { Text, Space } from 'avrs-ui/src/text'
 import { Link } from 'avrs-ui/src/link'
 import ServicePlan from './ServicePlan'
 
-const ServicePlans = ({ basis, standard, premium, business, onRegister }) => (
+const ServicePlans = ({ basis, standart, premium, business, onRegister }) => (
   <Column>
     <Layout grow={1} />
     <Layout basis='700px'>
@@ -56,7 +56,7 @@ const ServicePlans = ({ basis, standard, premium, business, onRegister }) => (
         </Layout>
         <Layout basis='30px' />
         <Layout>
-          <ServicePlan {...standard} />
+          <ServicePlan {...standart} />
         </Layout>
         <Layout basis='100px' />
         <Layout justify='center'>

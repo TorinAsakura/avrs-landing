@@ -100,7 +100,7 @@ const Career = () => (
         hideLeftBorder
         hideRightBorder
       >
-        10%
+        5%
       </Cell>
       <Cell>
         -

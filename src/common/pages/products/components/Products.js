@@ -3,7 +3,7 @@ import { Column, Row, Layout } from 'flex-layouts'
 import { Text, Space } from 'avrs-ui/src/text'
 import { Divider } from 'avrs-ui/src/divider'
 import { Link } from 'avrs-ui/src/link'
-import { Exclusive, MobileApps } from 'avrs-ui/src/promo'
+import { Exclusive } from 'avrs-ui/src/promo'
 import PrepaidCard from './PrepaidCard'
 
 const Products = ({ onRegister }) => (
@@ -65,84 +65,6 @@ const Products = ({ onRegister }) => (
         <Layout>
           <Divider />
         </Layout>
-        <Layout basis='80px' />
-        <Layout>
-          <Column>
-            <Layout basis='60px' />
-            <Layout basis='470px'>
-              <Row>
-                <Layout basis='20px' />
-                <Layout>
-                  <Text
-                    color='blue400'
-                    size='large'
-                  >
-                    Aversis Mobile Apps
-                  </Text>
-                </Layout>
-                <Layout basis='12px' />
-                <Layout>
-                  <Text weight='light'>
-                    Для удобства пользованием нашим основным продуктом и
-                    осуществления постоянного контроля мы предлагаем
-                    нашим клиентам бесплатное мобильное приложение.
-                  </Text>
-                </Layout>
-                <Layout basis='8px' />
-                <Layout>
-                  <Column>
-                    <Layout>
-                      <Link>
-                        <Text
-                          size='small'
-                          color='blue400'
-                        >
-                          App Store
-                        </Text>
-                      </Link>
-                      <Space />
-                      <Text
-                        color='blue400'
-                        size='small'
-                        lineHeight='extended'
-                      >
-                        &#10095;
-                      </Text>
-                    </Layout>
-                    <Layout basis='16px' />
-                    <Layout>
-                      <Link>
-                        <Text
-                          size='small'
-                          color='blue400'
-                        >
-                          Google Play
-                        </Text>
-                      </Link>
-                      <Space />
-                      <Text
-                        color='blue400'
-                        size='small'
-                        lineHeight='extended'
-                      >
-                        &#10095;
-                      </Text>
-                    </Layout>
-                    <Layout basis='50px' />
-                  </Column>
-                </Layout>
-              </Row>
-            </Layout>
-            <Layout basis='50px' />
-            <Layout>
-              <MobileApps />
-            </Layout>
-          </Column>
-        </Layout>
-        <Layout basis='60px' />
-        <Layout>
-          <Divider />
-        </Layout>
         <Layout basis='30px' />
         <Layout>
           <Column>
@@ -189,7 +111,7 @@ const Products = ({ onRegister }) => (
             </Layout>
           </Column>
         </Layout>
-        <Layout basis='20px' />
+        <Layout basis='60px' />
       </Row>
     </Layout>
     <Layout grow={1} />

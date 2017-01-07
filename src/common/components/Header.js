@@ -5,7 +5,7 @@ import { Logo, LogoWhite } from 'avrs-ui/src/logo'
 import { Button, GhostButton } from 'avrs-ui/src/button'
 import { Condition } from 'avrs-ui/src/condition'
 import { Divider } from 'avrs-ui/src/divider'
-import NavLink from './NavLink'
+import { NavLink } from 'avrs-ui/src/link'
 
 const Header = ({ light, onLogin, onRegister }) => (
   <Row>
