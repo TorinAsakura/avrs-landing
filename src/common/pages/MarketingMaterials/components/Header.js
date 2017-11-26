@@ -1,21 +1,23 @@
 import React from 'react'
+import { injectIntl } from 'react-intl'
 import { Column, Row, Layout } from 'flex-layouts'
 import { Section } from 'avrs-ui/src/section'
 import { Text } from 'avrs-ui/src/text'
+import messages from './messages'
 
-const Header = () => (
+const Header = ({ intl, small }) => (
   <Section color='gray'>
     <Column>
-      <Layout basis='110px' />
+      <Layout basis={small ? '25px' : '110px'} />
       <Layout>
         <Row>
           <Layout basis='30px' />
           <Layout>
             <Text
-              size='large'
+              size={small ? 'medium' : 'large'}
               color='gray250'
             >
-              Маркетинговые материалы
+              {intl.formatMessage(messages.header)}
             </Text>
           </Layout>
           <Layout basis='4px' />
@@ -34,4 +36,4 @@ const Header = () => (
   </Section>
 )
 
-export default Header
+export default injectIntl(Header)

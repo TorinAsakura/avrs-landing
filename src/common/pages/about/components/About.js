@@ -5,7 +5,7 @@ import Header from './Header'
 import Summary from './Summary'
 import Content from './Content'
 
-const About = ({ question }) => (
+const About = ({ question, content }) => (
   <ScrollTo
     to={question}
     prefix='about'
@@ -30,7 +30,7 @@ const About = ({ question }) => (
             grow={1}
             shrink={1}
           >
-            <Content />
+            <Content content={content} />
           </Layout>
           <Layout basis='180px' />
         </Column>

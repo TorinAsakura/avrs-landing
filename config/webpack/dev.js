@@ -1,18 +1,31 @@
+import path from 'path'
 import webpack from 'webpack'
-import nested from 'jss-nested'
-import camelCase from 'jss-camel-case'
+import jssGlobal from 'jss-global'
+import jssNested from 'jss-nested'
+import jssCamelCase from 'jss-camel-case'
 import autoprefixer from 'autoprefixer'
+import AssetsPlugin from 'assets-webpack-plugin'
 import CssResolvePlugin from 'elementum-tools/lib/webpack/css-resolve-plugin'
 
-export const entry = [
-  'babel-polyfill',
-  'webpack-hot-middleware/client',
-  'react-hot-loader/patch',
-  './src/client/index.js',
-]
+export const entry = {
+  desktop: [
+    'babel-polyfill',
+    'webpack-hot-middleware/client',
+    'react-hot-loader/patch',
+    './src/client/desktop.js',
+  ],
+  phone: [
+    'babel-polyfill',
+    'webpack-hot-middleware/client',
+    'react-hot-loader/patch',
+    './src/client/phone.js',
+  ],
+}
 
 export const output = {
-  filename: 'index.js',
+  path: '/',
+  filename: '[name].js',
+  publicPath: '/',
 }
 
 export const module = {
@@ -41,6 +54,9 @@ export const module = {
                 },
                 extract: true,
               }],
+              ['react-intl', {
+                messagesDir: path.join(__dirname, '../../locales/messages/'),
+              }],
             ],
           },
         },
@@ -65,7 +81,11 @@ export const module = {
     },
     {
       test: /\.(png|jpg|svg|ttf|eot|woff|woff2)$/,
-      loader: 'file-loader?name=/[name].[ext]',
+      use: 'file-loader?name=[name].[ext]',
+    },
+    {
+      test: /\.po$/,
+      use: path.join(__dirname, 'loader/po-loader.js'),
     },
   ],
 }
@@ -77,13 +97,17 @@ export const resolve = {
 }
 
 export const plugins = [
+  new AssetsPlugin({
+    path: path.join(__dirname, '../../build'),
+  }),
   new webpack.HotModuleReplacementPlugin(),
   new webpack.LoaderOptionsPlugin({
     options: {
       jssLoader: {
         plugins: [
-          nested(),
-          camelCase(),
+          jssGlobal(),
+          jssNested(),
+          jssCamelCase(),
         ],
       },
       postcss: {

@@ -1,16 +1,37 @@
 import React from 'react'
+import { defineMessages, injectIntl, FormattedMessage } from 'react-intl'
 import { Row, Layout } from 'flex-layouts'
-import { Text, Space } from 'avrs-ui/src/text'
+import { Text } from 'avrs-ui/src/text'
 import { Slider } from 'avrs-ui/src/slider'
 
-const names = {
-  basis: 'Базис',
-  standart: 'Стандарт',
-  premium: 'Премиум',
-  business: 'Бизнес',
-}
+const messages = defineMessages({
+  calculator: {
+    id: 'main.service_plan.calculator',
+    defaultMessage: 'С тарифом {servicePlan} за {period} подписки',
+  },
+  period: {
+    id: 'main.service_plan.period',
+    defaultMessage: '{period} дней',
+  },
+  basis: {
+    id: 'service_plans.basis',
+    defaultMessage: 'Базис',
+  },
+  standart: {
+    id: 'service_plans.standart',
+    defaultMessage: 'Стандарт',
+  },
+  premium: {
+    id: 'service_plans.premium',
+    defaultMessage: 'Премиум',
+  },
+  business: {
+    id: 'service_plans.business',
+    defaultMessage: 'Бизнес',
+  },
+})
 
-const Calculator = ({ plan, period = 90, onChange }) => (
+const Calculator = ({ intl, plan, period = 90, onChange }) => (
   <Row>
     <Layout>
       <Text
@@ -25,35 +46,27 @@ const Calculator = ({ plan, period = 90, onChange }) => (
         color='gray250'
         size='small'
       >
-        С тарифом
-      </Text>
-      <Space />
-      <Text
-        color='blue400'
-        size='small'
-      >
-        {names[plan.type]}
-      </Text>
-      <Space />
-      <Text
-        color='gray250'
-        size='small'
-      >
-        за
-      </Text>
-      <Space />
-      <Text
-        color='blue400'
-        size='small'
-      >
-        {period} дней
-      </Text>
-      <Space />
-      <Text
-        color='gray250'
-        size='small'
-      >
-        подписки
+        <FormattedMessage
+          {...messages.calculator}
+          values={{
+            servicePlan: (
+              <Text
+                color='blue400'
+                size='small'
+              >
+                {intl.formatMessage(messages[plan.type])}
+              </Text>
+            ),
+            period: (
+              <Text
+                color='blue400'
+                size='small'
+              >
+                {intl.formatMessage(messages.period, { period })}
+              </Text>
+            ),
+          }}
+        />
       </Text>
     </Layout>
     <Layout basis='20px' />
@@ -67,4 +80,4 @@ const Calculator = ({ plan, period = 90, onChange }) => (
   </Row>
 )
 
-export default Calculator
+export default injectIntl(Calculator)

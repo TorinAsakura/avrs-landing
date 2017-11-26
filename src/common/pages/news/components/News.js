@@ -1,15 +1,15 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Column, Row, Layout } from 'flex-layouts'
 import Preview from './Preview'
 
-const News = ({ news }) => (
+const News = ({ rows }) => (
   <Column>
     <Layout grow={1} />
     <Layout basis='900px'>
       <Row>
         <Layout basis='40px' />
-        {news.map((item, index) => (
-          <Layout key={index}>
+        {rows.map(item => (
+          <Layout key={item.slug}>
             <Preview {...item} />
           </Layout>
         ))}
@@ -20,4 +20,16 @@ const News = ({ news }) => (
   </Column>
 )
 
-export default News
+class NewsContainer extends Component {
+  componentDidMount() {
+    this.props.onLoad()
+  }
+
+  render() {
+    return (
+      <News {...this.props} />
+    )
+  }
+}
+
+export default NewsContainer

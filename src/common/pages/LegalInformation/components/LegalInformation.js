@@ -2,8 +2,9 @@ import React from 'react'
 import { Column, Row, Layout } from 'flex-layouts'
 import Header from './Header'
 import Summary from './Summary'
+import Content from './Content'
 
-const LegalInformation = ({ children }) => (
+const LegalInformation = ({ content }) => (
   <Row>
     <Layout>
       <Header />
@@ -20,7 +21,7 @@ const LegalInformation = ({ children }) => (
           grow={1}
           shrink={1}
         >
-          {children}
+          <Content content={content} />
         </Layout>
         <Layout basis='180px' />
       </Column>

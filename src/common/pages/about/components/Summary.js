@@ -1,9 +1,117 @@
 import React from 'react'
+import { defineMessages, injectIntl, FormattedMessage } from 'react-intl'
 import { StyleSheet } from 'elementum'
 import { Row, Layout } from 'flex-layouts'
-import { Text, Space } from 'avrs-ui/src/text'
+import { Text } from 'avrs-ui/src/text'
 import { PointerLink, RouteLink } from 'avrs-ui/src/link'
 import ScrollToTop from './ScrollToTop'
+
+const messages = defineMessages({
+  common: {
+    id: 'about.summary.common',
+    defaultMessage: 'Основные',
+  },
+  about: {
+    id: 'about.summary.about',
+    defaultMessage: 'Что такое Aversis?',
+  },
+  whatYouNeed: {
+    id: 'about.summary.what_you_need',
+    defaultMessage: 'Для чего это нужно?',
+  },
+  advantages: {
+    id: 'about.summary.advantages',
+    defaultMessage: 'Какие преимущества?',
+  },
+  capabilities: {
+    id: 'about.summary.capabilities',
+    defaultMessage: 'Какие возможности?',
+  },
+  target: {
+    id: 'about.summary.target',
+    defaultMessage: 'Какая наша цель?',
+  },
+  join: {
+    id: 'about.summary.join',
+    defaultMessage: 'Как стать участником?',
+  },
+  income: {
+    id: 'about.summary.income',
+    defaultMessage: 'Как мне получать доход?',
+  },
+  carrier: {
+    id: 'about.summary.carrier',
+    defaultMessage: 'Условия карьеры',
+  },
+  inviteMembers: {
+    id: 'about.summary.invite_members',
+    defaultMessage: 'Приглашение участников',
+  },
+  products: {
+    id: 'about.summary.products',
+    defaultMessage: 'Продукты компании',
+  },
+  requirements: {
+    id: 'about.summary.requirements',
+    defaultMessage: 'Требования для ПК',
+  },
+  referal: {
+    id: 'about.summary.referal',
+    defaultMessage: 'Реферальная программа',
+  },
+  security: {
+    id: 'about.summary.security',
+    defaultMessage: 'Безопасность',
+  },
+  confidence: {
+    id: 'about.summary.confidence',
+    defaultMessage: 'Почему я могу вам доверять?',
+  },
+  hack: {
+    id: 'about.summary.hack',
+    defaultMessage: 'Могут ли меня взломать?',
+  },
+  twoStepAuth: {
+    id: 'about.summary.two_step_auth',
+    defaultMessage: 'Двухэтапная авторизация',
+  },
+  account: {
+    id: 'about.summary.account',
+    defaultMessage: 'Аккаунт',
+  },
+  registration: {
+    id: 'about.summary.registration',
+    defaultMessage: 'Регистрация',
+  },
+  conclusion: {
+    id: 'about.summary.conclusion_of_an_agreement',
+    defaultMessage: 'Заключение соглашения',
+  },
+  termination: {
+    id: 'about.summary.termination',
+    defaultMessage: 'Расторжение соглашения',
+  },
+  changeData: {
+    id: 'about.summary.change_data',
+    defaultMessage: 'Изменение данных',
+  },
+  payment: {
+    id: 'about.summary.payment',
+    defaultMessage: 'Оплата лицензии',
+  },
+  withdrawal: {
+    id: 'about.summary.withdrawal',
+    defaultMessage: 'Вывод средств',
+  },
+  info: {
+    id: 'legal_information.summary.info',
+    defaultMessage: 'Для получения дополнительной информации или справки посетите страницу {support} Aversis.',
+  },
+  support: {
+    id: 'legal_information.summary.support',
+    defaultMessage: 'службы поддержки',
+  },
+})
 
 const styles = StyleSheet.create({
   self: {
@@ -19,7 +127,7 @@ const styles = StyleSheet.create({
   },
 })
 
-const Summary = () => (
+const Summary = ({ intl }) => (
   <div className={styles()}>
     <Row>
       <Layout>
@@ -28,48 +136,48 @@ const Summary = () => (
           color='black400'
           weight='medium'
         >
-          Основные
+          {intl.formatMessage(messages.common)}
         </Text>
       </Layout>
       <Layout basis='2px' />
       <Layout>
         <PointerLink to='/about'>
-          Что такое Aversis?
+          {intl.formatMessage(messages.about)}
         </PointerLink>
       </Layout>
       <Layout>
         <PointerLink to='/about/what-you-need'>
-          Для чего это нужно?
+          {intl.formatMessage(messages.whatYouNeed)}
         </PointerLink>
       </Layout>
       <Layout>
         <PointerLink to='/about/advantages'>
-          Какие преимущества?
+          {intl.formatMessage(messages.advantages)}
         </PointerLink>
       </Layout>
       <Layout>
         <PointerLink to='/about/capabilities'>
-          Какие возможности?
+          {intl.formatMessage(messages.capabilities)}
         </PointerLink>
       </Layout>
       <Layout>
         <PointerLink to='/about/target'>
-          Какая наша цель?
+          {intl.formatMessage(messages.target)}
         </PointerLink>
       </Layout>
       <Layout>
         <PointerLink to='/about/join'>
-          Как стать участником?
+          {intl.formatMessage(messages.join)}
         </PointerLink>
       </Layout>
       <Layout>
         <PointerLink to='/about/income'>
-          Как мне получать доход?
+          {intl.formatMessage(messages.income)}
         </PointerLink>
       </Layout>
       <Layout>
         <PointerLink to='/about/carrier'>
-          Условия карьеры
+          {intl.formatMessage(messages.carrier)}
         </PointerLink>
       </Layout>
       <Layout basis='30px' />
@@ -85,22 +193,22 @@ const Summary = () => (
       <Layout basis='2px' />
       <Layout>
         <PointerLink to='/about/invite-members'>
-          Приглашение участников
+          {intl.formatMessage(messages.inviteMembers)}
         </PointerLink>
       </Layout>
       <Layout>
         <PointerLink to='/about/products'>
-          Продукты компании
+          {intl.formatMessage(messages.products)}
         </PointerLink>
       </Layout>
       <Layout>
         <PointerLink to='/about/requirements'>
-          Требования для ПК
+          {intl.formatMessage(messages.requirements)}
         </PointerLink>
       </Layout>
       <Layout>
         <PointerLink to='/about/referal'>
-          Реферальная программа
+          {intl.formatMessage(messages.referal)}
         </PointerLink>
       </Layout>
       <Layout basis='30px' />
@@ -110,23 +218,23 @@ const Summary = () => (
           color='black400'
           weight='medium'
         >
-          Безопасность
+          {intl.formatMessage(messages.security)}
         </Text>
       </Layout>
       <Layout basis='2px' />
       <Layout>
         <PointerLink to='/about/confidence'>
-          Почему я могу вам доверять?
+          {intl.formatMessage(messages.confidence)}
         </PointerLink>
       </Layout>
       <Layout>
         <PointerLink to='/about/hack'>
-          Могут ли меня взломать?
+          {intl.formatMessage(messages.hack)}
         </PointerLink>
       </Layout>
       <Layout>
         <PointerLink to='/about/two-step-auth'>
-          Двухэтапная авторизация
+          {intl.formatMessage(messages.twoStepAuth)}
         </PointerLink>
       </Layout>
       <Layout basis='30px' />
@@ -136,68 +244,66 @@ const Summary = () => (
           color='black400'
           weight='medium'
         >
-          Аккаунт
+          {intl.formatMessage(messages.account)}
         </Text>
       </Layout>
       <Layout basis='2px' />
       <Layout>
         <PointerLink to='/about/registration'>
-          Регистрация
+          {intl.formatMessage(messages.registration)}
         </PointerLink>
       </Layout>
       <Layout>
         <PointerLink to='/about/conclusion-of-an-agreement'>
-          Заключение соглашения
+          {intl.formatMessage(messages.conclusion)}
         </PointerLink>
       </Layout>
       <Layout>
         <PointerLink to='/about/termination'>
-          Расторжение соглашения
+          {intl.formatMessage(messages.termination)}
         </PointerLink>
       </Layout>
       <Layout>
         <PointerLink to='/about/change-data'>
-          Изменение данных
+          {intl.formatMessage(messages.changeData)}
         </PointerLink>
       </Layout>
       <Layout>
         <PointerLink to='/about/payment'>
-          Оплата лицензии
+          {intl.formatMessage(messages.payment)}
         </PointerLink>
       </Layout>
       <Layout>
         <PointerLink to='/about/withdrawal'>
-          Вывод средств
+          {intl.formatMessage(messages.withdrawal)}
         </PointerLink>
       </Layout>
       <Layout basis='60px' />
       <Layout>
-        <div>
-          <Text
-            size='small'
-            color='gray250'
-            weight='light'
-          >
-            Для получения дополнительной информации или справки посетите страницу
-          </Text>
-          <RouteLink to='/support'>
-            <Text
-              size='small'
-              color='blue400'
-              weight='light'
-            >
-              службы поддержки
-            </Text>
-          </RouteLink>
-          <Space />
-          <Text
-            size='small'
-            color='gray250'
-            weight='light'
-          >
-            Aversis.
-          </Text>
-        </div>
+        <Text
+          size='small'
+          color='gray250'
+          weight='light'
+          lineHeight='extended'
+        >
+          <FormattedMessage
+            {...messages.info}
+            values={{
+              support: (
+                <RouteLink to='/support'>
+                  <Text
+                    size='small'
+                    color='blue400'
+                    weight='light'
+                    lineHeight='extended'
+                  >
+                    {intl.formatMessage(messages.support)}
+                  </Text>
+                </RouteLink>
+              ),
+            }}
+          />
+        </Text>
       </Layout>
       <Layout basis='20px' />
       <Layout grow={1}>
@@ -207,4 +313,4 @@ const Summary = () => (
   </div>
 )
 
-export default Summary
+export default injectIntl(Summary)

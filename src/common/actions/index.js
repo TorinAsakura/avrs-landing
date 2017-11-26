@@ -1,5 +1,4 @@
 import url from 'url'
-import * as servicePlansActions from '../constants/servicePlans'
 
 const redirectToCabinet = (hash) => {
   const { protocol, host } = window.location
@@ -31,18 +30,4 @@ export function closeModal() {
   const href = url.format({ ...current, query, search: undefined })
 
   window.location.replace(href)
-}
-
-export function changeServicePlan(type) {
-  return {
-    type: servicePlansActions.changePlan,
-    plan: type,
-  }
-}
-
-export function changeServicePlanPeriod(period) {
-  return {
-    type: servicePlansActions.changePeriod,
-    period,
-  }
 }

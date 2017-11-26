@@ -1,20 +1,32 @@
-/* eslint-disable max-len */
+import * as actions from '../constants/news'
 
 const initialState = {
-  launch: {
-    slug: 'launch',
-    title: 'Запуск тестовой версии',
-    content: '«Aversis Systems» - интеллектуальная система, которая занимается глобальным распределением вычислительной сети и дает возможность сдать в аренду не используемые процессорные мощности. Мы создали эксклюзивную программу AVERS для привлечения ресурсов для развития и ускоренного роста Глобальной Распределенной Вычислительной Системы. Задача компании Aversis Systems объединить полученные ресурсы и распределить их далее, в соответствии с запросами. Вознаграждение, полученное компанией за предоставление вычислительного ресурса, распределяется между клиентами. Доходы начисляются пропорционально по объему и времени предоставления вычислительных ресурсов, согласно тарифу.',
-    visits: 159,
-    date: '25 Ноября',
-  },
-  presentation: {
-    slug: 'presentation',
-    title: 'Презентация продукта',
-    content: 'Задача компании Aversis Systems объединить полученные ресурсы и распределить их далее, в соответствии с запросами. Вознаграждение, полученное компанией за предоставление вычислительного ресурса, распределяется между клиентами. Доходы начисляются пропорционально по объему и времени предоставления вычислительных ресурсов, согласно тарифу.',
-    visits: 159,
-    date: '25 Ноября',
-  },
+  limit: 20,
+  offset: 0,
+  count: 0,
+  rows: [],
+  detail: {},
+  preview: {},
 }
 
-export default (state = initialState) => state
+export default (state = initialState, action) => {
+  if (action.type === actions.load) {
+    return {
+      ...state,
+      count: action.count,
+      rows: action.rows,
+    }
+  } else if (action.type === actions.loadDetail) {
+    return {
+      ...state,
+      detail: action.post,
+    }
+  } else if (action.type === actions.loadPreview) {
+    return {
+      ...state,
+      preview: action.preview,
+    }
+  }
+
+  return state
+}

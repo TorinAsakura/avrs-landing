@@ -6,6 +6,7 @@ import { createRouterObject } from 'react-router/lib/RouterUtils';
 import routerStateEquals from 'redux-router/lib/routerStateEquals';
 import { ROUTER_STATE_SELECTOR } from 'redux-router/lib/constants';
 import { initRoutes, replaceRoutes } from 'redux-router/lib/actionCreators';
+import { useBasename } from 'history'
 
 function memoizeRouterStateSelector(selector) {
   let previousRouterState = null;
@@ -24,6 +25,10 @@ function getRoutesFromProps(props) {
   return props.routes || props.children;
 }
 
+function getBasename(locale) {
+  return locale ? `/${locale}` : null
+}
+
 class ReduxRouter extends Component {
   static propTypes = {
     children: PropTypes.node
@@ -35,7 +40,12 @@ class ReduxRouter extends Component {
 
   constructor(props, context) {
     super(props, context);
-    this.router = createRouterObject(context.store.history, context.store.transitionManager, {});
+    this.history = useBasename(() => context.store.history)({ basename: getBasename(props.locale) })
+    this.router = createRouterObject(this.history, context.store.transitionManager, {})
+
+    this.state = {
+      locale: props.locale,
+    }
   }
 
   componentWillMount() {
@@ -43,6 +53,13 @@ class ReduxRouter extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    if (nextProps.locale !== this.props.locale) {
+      this.history = useBasename(() => this.context.store.history)({ basename: getBasename(nextProps.locale) })
+      this.router = createRouterObject(this.history, this.context.store.transitionManager, {})
+
+      this.setState({ locale: nextProps.locale })
+    }
+
     this.receiveRoutes(getRoutesFromProps(nextProps));
   }
 
@@ -77,8 +94,8 @@ class ReduxRouter extends Component {
 
     return (
       <ReduxRouterContext
-        history={history}
         routerStateSelector={memoizeRouterStateSelector(routerStateSelector)}
+        history={this.history}
         router={this.router}
         {...this.props}
       />
@@ -109,4 +126,8 @@ const ReduxRouterContext = connect(
   (state, { routerStateSelector }) => routerStateSelector(state) || {}
 )(ReduxRouterContextContainer)
 
-export default ReduxRouter;
+export default connect(
+  state => ({
+    locale: state.router.params.locale,
+  }),
+)(ReduxRouter)

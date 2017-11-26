@@ -1,9 +1,17 @@
 import React, { Component } from 'react'
+import { defineMessages, injectIntl } from 'react-intl'
 import scrollIntoView from 'scroll-into-view'
 import { StyleSheet } from 'elementum'
 import { Link } from 'avrs-ui/src/link'
 import { Layer } from 'avrs-ui/src/layer'
 import { Text, Space } from 'avrs-ui/src/text'
+
+const messages = defineMessages({
+  up: {
+    id: 'about.scroll.up',
+    defaultMessage: 'Наверх',
+  },
+})
 
 const styles = StyleSheet.create({
   self: {
@@ -30,6 +38,8 @@ class ScrollToTop extends Component {
   }
 
   render() {
+    const { intl } = this.props
+
     return (
       <div
         ref={this.onSetRef}
@@ -53,7 +63,7 @@ class ScrollToTop extends Component {
             <Space />
             <Link onClick={this.onClick}>
               <Text color='blue400'>
-                Наверх
+                {intl.formatMessage(messages.up)}
               </Text>
             </Link>
           </div>
@@ -63,4 +73,4 @@ class ScrollToTop extends Component {
   }
 }
 
-export default ScrollToTop
+export default injectIntl(ScrollToTop)

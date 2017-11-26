@@ -1,12 +1,25 @@
 import React from 'react'
+import { injectIntl } from 'react-intl'
 import { Column, Row, Layout } from 'flex-layouts'
 import { Divider } from 'avrs-ui/src/divider'
 import { GhostButton } from 'avrs-ui/src/button'
 import { Text } from 'avrs-ui/src/text'
 import Header from './Header'
 import { Presentation, Brandbook, BrandbookMaterials, Logos } from './images'
+import messages from './messages'
 
-const MarketingMaterials = () => (
+const getPresetntationUrl = (locale) => {
+  const target = locale === 'ru' ? 'RU' : 'DE'
+
+  return `https://s3.eu-central-1.amazonaws.com/avrs/promo/Presentation-JP-${target}.pdf`
+}
+
+const openPresentation = locale => window.open(getPresetntationUrl(locale))
+
+const openBrandbook = () =>
+  window.open('https://s3.eu-central-1.amazonaws.com/avrs/promo/Brandbook.pdf')
+
+const MarketingMaterials = ({ intl }) => (
   <Row>
     <Layout>
       <Header />
@@ -31,21 +44,33 @@ const MarketingMaterials = () => (
                         size='large'
                         color='black400'
                       >
-                        Электронная презентация
+                        {intl.formatMessage(messages.presentation)}
                       </Text>
                     </Layout>
                     <Layout basis='12px' />
                     <Layout>
                       <Column>
                         <Layout>
-                          <GhostButton rounded color='blue'>
-                            Скачать PDF (12 Mb.)
-                          </GhostButton>
+                          <a
+                            download
+                            href={getPresetntationUrl(intl.locale)}
+                          >
+                            <GhostButton
+                              rounded
+                              color='blue'
+                            >
+                              {intl.formatMessage(messages.download)} PDF (218 Kb.)
+                            </GhostButton>
+                          </a>
                         </Layout>
                         <Layout basis='12px' />
                         <Layout>
-                          <GhostButton rounded color='blue'>
-                            Посмотреть
+                          <GhostButton
+                            rounded
+                            color='blue'
+                            onClick={() => openPresentation(intl.locale)}
+                          >
+                            {intl.formatMessage(messages.view)}
                           </GhostButton>
                         </Layout>
                       </Column>
@@ -73,21 +98,30 @@ const MarketingMaterials = () => (
                         size='large'
                         color='black400'
                       >
-                        Брендбук
+                        {intl.formatMessage(messages.brandbook)}
                       </Text>
                     </Layout>
                     <Layout basis='12px' />
                     <Layout>
                       <Column>
                         <Layout>
-                          <GhostButton rounded color='blue'>
-                            Скачать PDF (12 Mb.)
-                          </GhostButton>
+                          <a
+                            download
+                            href='https://s3.eu-central-1.amazonaws.com/avrs/promo/Brandbook.pdf'
+                          >
+                            <GhostButton rounded color='blue'>
+                              {intl.formatMessage(messages.download)} PDF (37.6 Mb.)
+                            </GhostButton>
+                          </a>
                         </Layout>
                         <Layout basis='12px' />
                         <Layout>
-                          <GhostButton rounded color='blue'>
-                            Посмотреть
+                          <GhostButton
+                            rounded
+                            color='blue'
+                            onClick={openBrandbook}
+                          >
+                            {intl.formatMessage(messages.view)}
                           </GhostButton>
                         </Layout>
                       </Column>
@@ -115,14 +149,16 @@ const MarketingMaterials = () => (
                         size='large'
                         color='black400'
                       >
-                        Материалы к брендбуку
+                        {intl.formatMessage(messages.brandbookMaterial)}
                       </Text>
                     </Layout>
                     <Layout basis='12px' />
                     <Layout>
-                      <GhostButton rounded color='blue'>
-                        Скачать PDF (12 Mb.)
-                      </GhostButton>
+                      <a href='https://s3.eu-central-1.amazonaws.com/avrs/promo/Identity.zip'>
+                        <GhostButton rounded color='blue'>
+                          {intl.formatMessage(messages.download)} ZIP (15,6 Mb.)
+                        </GhostButton>
+                      </a>
                     </Layout>
                   </Row>
                 </Layout>
@@ -147,14 +183,16 @@ const MarketingMaterials = () => (
                         size='large'
                         color='black400'
                       >
-                        Векторные логотипы
+                        {intl.formatMessage(messages.logos)}
                       </Text>
                     </Layout>
                     <Layout basis='12px' />
                     <Layout>
-                      <GhostButton rounded color='blue'>
-                        Скачать PDF (12 Mb.)
-                      </GhostButton>
+                      <a href='https://s3.eu-central-1.amazonaws.com/avrs/promo/Logos.zip'>
+                        <GhostButton rounded color='blue'>
+                          {intl.formatMessage(messages.download)} ZIP (21 Kb.)
+                        </GhostButton>
+                      </a>
                     </Layout>
                   </Row>
                 </Layout>
@@ -173,4 +211,4 @@ const MarketingMaterials = () => (
   </Row>
 )
 
-export default MarketingMaterials
+export default injectIntl(MarketingMaterials)

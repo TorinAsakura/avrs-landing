@@ -1,10 +1,11 @@
 import React from 'react'
 import { Column, Row, Layout } from 'flex-layouts'
-import { Text, Space } from 'avrs-ui/src/text'
 import { Section } from 'avrs-ui/src/section'
 import { Profit, Exclusive, Referal } from 'avrs-ui/src/promo'
 import { Divider } from 'avrs-ui/src/divider'
-import { RouteLink } from 'avrs-ui/src/link'
+import { EarnHeader, EarnTitle, EarnMessage, EarnLink } from './capabilities/Earn'
+import { InviteHeader, InviteTitle, InviteMessage, InviteLink } from './capabilities/Invite'
+import { UseHeader, UseTitle, UseMessage, UseLink } from './capabilities/Use'
 
 const Capabilities = () => (
   <Section
@@ -26,47 +27,19 @@ const Capabilities = () => (
               <Layout basis='440px'>
                 <Row>
                   <Layout>
-                    <Text
-                      size='small'
-                      color='gray200'
-                      weight='medium'
-                    >
-                      ЗАРАБАТЫВАЙТЕ
-                    </Text>
+                    <EarnHeader />
                   </Layout>
                   <Layout basis='15px' />
                   <Layout>
-                    <Text
-                      size='large'
-                      color='blue700'
-                    >
-                      Получение дохода
-                    </Text>
+                    <EarnTitle />
                   </Layout>
                   <Layout basis='15px' />
                   <Layout>
-                    <Text
-                      weight='light'
-                      size='normal'
-                      color='black400'
-                      lineHeight='extended'
-                    >
-                      Мы предлагаем возможность получения дохода от сдачи в аренду
-                      свободного вычислительного ресурса своего компьютера.
-                      Поступления на ваш счет в течение каждого часа!
-                    </Text>
+                    <EarnMessage />
                   </Layout>
                   <Layout basis='15px' />
                   <Layout>
-                    <RouteLink to='/service-plans'>
-                      <Text color='blue400'>
-                        Тарифы
-                      </Text>
-                    </RouteLink>
-                    <Space />
-                    <Text color='blue400'>
-                      &#10095;
-                    </Text>
+                    <EarnLink />
                   </Layout>
                 </Row>
               </Layout>
@@ -83,46 +56,19 @@ const Capabilities = () => (
               <Layout basis='440px'>
                 <Row>
                   <Layout>
-                    <Text
-                      size='small'
-                      color='gray200'
-                      weight='medium'
-                    >
-                      ПРИГЛАШАЙТЕ
-                    </Text>
+                    <InviteHeader />
                   </Layout>
                   <Layout basis='15px' />
                   <Layout>
-                    <Text
-                      color='blue700'
-                      size='large'
-                    >
-                      Реферальная программа
-                    </Text>
+                    <InviteTitle />
                   </Layout>
                   <Layout basis='15px' />
                   <Layout>
-                    <Text
-                      size='normal'
-                      color='black400'
-                      weight='light'
-                      lineHeight='extended'
-                    >
-                      Суть нашей реферальной системы заключается в ее многоуровности.
-                      Это означает, что получать прибыль можно не только с клиентов, которых пригласили вы.
-                    </Text>
+                    <InviteMessage />
                   </Layout>
                   <Layout basis='15px' />
                   <Layout>
-                    <RouteLink to='/about/carrier'>
-                      <Text color='blue400'>
-                        Комиссионные
-                      </Text>
-                    </RouteLink>
-                    <Space />
-                    <Text color='blue400'>
-                      &#10095;
-                    </Text>
+                    <InviteLink />
                   </Layout>
                 </Row>
               </Layout>
@@ -147,46 +93,19 @@ const Capabilities = () => (
               <Layout basis='440px'>
                 <Row>
                   <Layout>
-                    <Text
-                      size='small'
-                      color='gray200'
-                      weight='medium'
-                    >
-                      ПОЛЬЗУЙТЕСЬ
-                    </Text>
+                    <UseHeader />
                   </Layout>
                   <Layout basis='15px' />
                   <Layout>
-                    <Text
-                      size='large'
-                      color='blue700'
-                    >
-                      Эксклюзивные продукты
-                    </Text>
+                    <UseTitle />
                   </Layout>
                   <Layout basis='15px' />
                   <Layout>
-                    <Text
-                      size='normal'
-                      color='black400'
-                      weight='light'
-                      lineHeight='extended'
-                    >
-                      Мы даем возможность получения и использования эксклюзивных продуктов,
-                      предлагаемых компанией Aversis Systems.
-                    </Text>
+                    <UseMessage />
                   </Layout>
                   <Layout basis='15px' />
                   <Layout>
-                    <RouteLink to='/products'>
-                      <Text color='blue400'>
-                        Посмотреть
-                      </Text>
-                    </RouteLink>
-                    <Space />
-                    <Text color='blue400'>
-                      &#10095;
-                    </Text>
+                    <UseLink />
                   </Layout>
                 </Row>
               </Layout>

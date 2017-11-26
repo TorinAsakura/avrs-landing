@@ -1,18 +1,41 @@
 import React from 'react'
+import { defineMessages, injectIntl } from 'react-intl'
 import { Column, Row, Layout } from 'flex-layouts'
-import { Text, Space } from 'avrs-ui/src/text'
 import { Section } from 'avrs-ui/src/section'
 import { Carousel, Screen } from 'avrs-ui/src/carousel'
 import { About, Benefit, Advantage, Target } from 'avrs-ui/src/promo'
-import { RouteLink } from 'avrs-ui/src/link'
+import { AboutTitle, AboutMessage } from './slides/messages/About'
+import { AdvantageTitle, AdvantageMessage } from './slides/messages/Advantage'
+import { BenefitTitle, BenefitMessage } from './slides/messages/Benefit'
+import { TargetTitle, TargetMessage } from './slides/messages/Target'
+import Links from './slides/Links'
 
-const Slides = () => (
+const messages = defineMessages({
+  whatItIs: {
+    id: 'main.slides.what_it_is',
+    defaultMessage: 'Что это такое',
+  },
+  benefit: {
+    id: 'main.slides.benefit',
+    defaultMessage: 'Польза Aversis',
+  },
+  advantage: {
+    id: 'main.slides.advantage',
+    defaultMessage: 'Преимущества',
+  },
+  target: {
+    id: 'main.slides.target',
+    defaultMessage: 'Цель',
+  },
+})
+
+const Slides = ({ intl }) => (
   <Section id='about'>
     <Column>
       <Layout grow={1} />
       <Layout basis='900px'>
         <Carousel>
-          <Screen title='Что это такое'>
+          <Screen title={intl.formatMessage(messages.whatItIs)}>
             <Row>
               <Layout basis='80px' />
               <Layout>
@@ -21,63 +44,15 @@ const Slides = () => (
                   <Layout basis='466px'>
                     <Row>
                       <Layout>
-                        <Text size='large'>
-                          Дайте возможность вашему компьютеру принести бо́льшую пользу.
-                        </Text>
+                        <AboutTitle />
                       </Layout>
                       <Layout basis='15px' />
                       <Layout>
-                        <Text
-                          size='normal'
-                          weight='light'
-                          color='gray200'
-                        >
-                          По большому счету, практически каждый из нас не использует потенциал своего компьютера
-                          на полную мощность. На что он тратит свою энергию? А если тысячи домашних
-                          ПК объединить ...
-                        </Text>
+                        <AboutMessage />
                       </Layout>
                       <Layout basis='18px' />
                       <Layout>
-                        <Column>
-                          <Layout>
-                            <RouteLink to='/about'>
-                              <Text
-                                color='blue400'
-                                size='small'
-                              >
-                                Узнать подробнее
-                              </Text>
-                            </RouteLink>
-                            <Space />
-                            <Text
-                              color='blue400'
-                              size='small'
-                              lineHeight='extended'
-                            >
-                              &#10095;
-                            </Text>
-                          </Layout>
-                          <Layout basis='30px' />
-                          <Layout>
-                            <RouteLink to={{ query: { modal: 'video' } }}>
-                              <Text
-                                size='small'
-                                color='blue400'
-                              >
-                                Смотреть видео
-                              </Text>
-                            </RouteLink>
-                            <Space />
-                            <Text
-                              color='blue400'
-                              size='small'
-                              lineHeight='extended'
-                            >
-                              &#10095;
-                            </Text>
-                          </Layout>
-                        </Column>
+                        <Links />
                       </Layout>
                     </Row>
                   </Layout>
@@ -90,7 +65,7 @@ const Slides = () => (
               </Layout>
             </Row>
           </Screen>
-          <Screen title='Польза Aversis'>
+          <Screen title={intl.formatMessage(messages.benefit)}>
             <Row>
               <Layout basis='80px' />
               <Layout>
@@ -99,64 +74,15 @@ const Slides = () => (
                   <Layout basis='470px'>
                     <Row>
                       <Layout>
-                        <Text size='large'>
-                          Таким образом, возможно разработать даже лекарство, например, от рака.
-                        </Text>
+                        <BenefitTitle />
                       </Layout>
                       <Layout basis='15px' />
                       <Layout>
-                        <Text
-                          size='normal'
-                          weight='light'
-                          color='gray200'
-                        >
-                          Объединяя ежедневно тысячи компьютеров «Аверсис»
-                          уже сегодня предоставляет ресурс в разработке новейших технологий,
-                          помогает решить сложные задачи в здравоохранении,
-                          осуществляет добычу крипто валют и поддерживает глобальные виртуальные ресурсы в интернете.
-                        </Text>
+                        <BenefitMessage />
                       </Layout>
                       <Layout basis='18px' />
                       <Layout>
-                        <Column>
-                          <Layout>
-                            <RouteLink to='/about'>
-                              <Text
-                                color='blue400'
-                                size='small'
-                              >
-                                Узнать подробнее
-                              </Text>
-                            </RouteLink>
-                            <Space />
-                            <Text
-                              color='blue400'
-                              size='small'
-                              lineHeight='extended'
-                            >
-                              &#10095;
-                            </Text>
-                          </Layout>
-                          <Layout basis='30px' />
-                          <Layout>
-                            <RouteLink to={{ query: { modal: 'video' } }}>
-                              <Text
-                                size='small'
-                                color='blue400'
-                              >
-                                Смотреть видео
-                              </Text>
-                            </RouteLink>
-                            <Space />
-                            <Text
-                              color='blue400'
-                              size='small'
-                              lineHeight='extended'
-                            >
-                              &#10095;
-                            </Text>
-                          </Layout>
-                        </Column>
+                        <Links />
                       </Layout>
                     </Row>
                   </Layout>
@@ -169,7 +95,7 @@ const Slides = () => (
               </Layout>
             </Row>
           </Screen>
-          <Screen title='Преимущества'>
+          <Screen title={intl.formatMessage(messages.advantage)}>
             <Row>
               <Layout basis='80px' />
               <Layout>
@@ -178,63 +104,15 @@ const Slides = () => (
                   <Layout basis='490px'>
                     <Row>
                       <Layout>
-                        <Text size='large'>
-                          О том, почему стоит доверять именно нам
-                        </Text>
+                        <AdvantageTitle />
                       </Layout>
                       <Layout basis='15px' />
                       <Layout>
-                        <Text
-                          size='normal'
-                          weight='light'
-                          color='gray200'
-                        >
-                          Компания Aversis Systems предлагает возможность
-                          получения дохода от сдачи в аренду свободного вычислительного ресурса своего компьютера,
-                          возможность использования эксклюзивных продуктов.
-                        </Text>
+                        <AdvantageMessage />
                       </Layout>
                       <Layout basis='18px' />
                       <Layout>
-                        <Column>
-                          <Layout>
-                            <RouteLink to='/about'>
-                              <Text
-                                color='blue400'
-                                size='small'
-                              >
-                                Узнать подробнее
-                              </Text>
-                            </RouteLink>
-                            <Space />
-                            <Text
-                              color='blue400'
-                              size='small'
-                              lineHeight='extended'
-                            >
-                              &#10095;
-                            </Text>
-                          </Layout>
-                          <Layout basis='30px' />
-                          <Layout>
-                            <RouteLink to={{ query: { modal: 'video' } }}>
-                              <Text
-                                size='small'
-                                color='blue400'
-                              >
-                                Смотреть видео
-                              </Text>
-                            </RouteLink>
-                            <Space />
-                            <Text
-                              color='blue400'
-                              size='small'
-                              lineHeight='extended'
-                            >
-                              &#10095;
-                            </Text>
-                          </Layout>
-                        </Column>
+                        <Links />
                       </Layout>
                     </Row>
                   </Layout>
@@ -247,7 +125,7 @@ const Slides = () => (
               </Layout>
             </Row>
           </Screen>
-          <Screen title='Цель'>
+          <Screen title={intl.formatMessage(messages.target)}>
             <Row>
               <Layout basis='80px' />
               <Layout>
@@ -256,63 +134,15 @@ const Slides = () => (
                   <Layout basis='426px'>
                     <Row>
                       <Layout>
-                        <Text size='large'>
-                          Наша главная цель – развитие глобальной сети.
-                        </Text>
+                        <TargetTitle />
                       </Layout>
                       <Layout basis='15px' />
                       <Layout>
-                        <Text
-                          size='normal'
-                          weight='light'
-                          color='gray200'
-                        >
-                          Привлечь ресурсы для развития и ускоренного роста
-                          Глобальной Распределенной Вычислительной Системы,
-                          а также объединить полученные вычислительные ресурсы ПК участников ...
-                        </Text>
+                        <TargetMessage />
                       </Layout>
                       <Layout basis='18px' />
                       <Layout>
-                        <Column>
-                          <Layout>
-                            <RouteLink to='/about'>
-                              <Text
-                                color='blue400'
-                                size='small'
-                              >
-                                Узнать подробнее
-                              </Text>
-                            </RouteLink>
-                            <Space />
-                            <Text
-                              color='blue400'
-                              size='small'
-                              lineHeight='extended'
-                            >
-                              &#10095;
-                            </Text>
-                          </Layout>
-                          <Layout basis='30px' />
-                          <Layout>
-                            <RouteLink to={{ query: { modal: 'video' } }}>
-                              <Text
-                                size='small'
-                                color='blue400'
-                              >
-                                Смотреть видео
-                              </Text>
-                            </RouteLink>
-                            <Space />
-                            <Text
-                              color='blue400'
-                              size='small'
-                              lineHeight='extended'
-                            >
-                              &#10095;
-                            </Text>
-                          </Layout>
-                        </Column>
+                        <Links />
                       </Layout>
                     </Row>
                   </Layout>
@@ -332,4 +162,4 @@ const Slides = () => (
   </Section>
 )
 
-export default Slides
+export default injectIntl(Slides)

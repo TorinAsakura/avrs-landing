@@ -1,16 +1,24 @@
 import React from 'react'
+import { defineMessages, injectIntl } from 'react-intl'
 import { Column, Row, Layout } from 'flex-layouts'
 import { Divider } from 'avrs-ui/src/divider'
-import { Text, Space } from 'avrs-ui/src/text'
+import { Text, Space, Markdown } from 'avrs-ui/src/text'
 import { RouteLink } from 'avrs-ui/src/link'
 
-const Preview = ({ slug, title, content, visits, date }) => (
+const messages = defineMessages({
+  more: {
+    id: 'news.read_more',
+    defaultMessage: 'Читать далее',
+  },
+})
+
+const Preview = ({ intl, offset = 100, slug, title, preview, publishAt }) => (
   <Row>
     <Layout basis='30px' />
     <Layout>
       <Column>
-        <Layout basis='100px' />
-        <Layout grow={1}>
+        <Layout basis={`${offset}px`} />
+        <Layout shrink={1} basis='100%'>
           <Row>
             <Layout>
               <RouteLink to={`/news/${slug}`}>
@@ -24,34 +32,27 @@ const Preview = ({ slug, title, content, visits, date }) => (
             </Layout>
             <Layout basis='20px' />
             <Layout>
-              <div style={{ width: 700 }}>
+              <Markdown>
+                {preview}
+              </Markdown>
+            </Layout>
+            <Layout>
+              <RouteLink to={`/news/${slug}`}>
                 <Text
-                  color='black400'
+                  color='blue400'
                   weight='light'
-                  lineHeight='large'
                 >
-                  <span>
-                    {content}
-                    <Space />
-                    <RouteLink to={`/news/${slug}`}>
-                      <Text
-                        color='blue400'
-                        weight='light'
-                      >
-                        Читать далее
-                      </Text>
-                    </RouteLink>
-                    <Space />
-                    <Text
-                      color='blue400'
-                      weight='light'
-                      lineHeight='extended'
-                    >
-                      &#10095;
-                    </Text>
-                  </span>
+                  {intl.formatMessage(messages.more)}
                 </Text>
-              </div>
+              </RouteLink>
+              <Space />
+              <Text
+                color='blue400'
+                weight='light'
+                lineHeight='extended'
+              >
+                &#10095;
+              </Text>
             </Layout>
             <Layout basis='30px' />
             <Layout>
@@ -62,16 +63,7 @@ const Preview = ({ slug, title, content, visits, date }) => (
                     size='small'
                     color='gray300'
                   >
-                    {visits} Просмотров
-                  </Text>
-                </Layout>
-                <Layout basis='20px' />
-                <Layout>
-                  <Text
-                    size='small'
-                    color='gray300'
-                  >
-                    {date}
+                    {intl.formatDate(publishAt, { month: 'long', year: 'numeric', day: 'numeric' })}
                   </Text>
                 </Layout>
                 <Layout grow={1} />
@@ -80,7 +72,7 @@ const Preview = ({ slug, title, content, visits, date }) => (
             <Layout basis='15px' />
           </Row>
         </Layout>
-        <Layout basis='100px' />
+        <Layout basis={`${offset}px`} />
       </Column>
     </Layout>
     <Layout>
@@ -90,4 +82,4 @@ const Preview = ({ slug, title, content, visits, date }) => (
   </Row>
 )
 
-export default Preview
+export default injectIntl(Preview)

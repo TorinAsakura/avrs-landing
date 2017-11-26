@@ -9,10 +9,16 @@ const styles = StyleSheet.create({
     position: 'relative',
     left: '-60px',
   },
+  small: {
+    width: '197px',
+    height: '192px',
+    backgroundSize: 'cover',
+    left: '-20px',
+  },
 })
 
-const PrepaidCard = () => (
-  <div className={styles()} />
+const PrepaidCard = ({ small }) => (
+  <div className={styles({ small })} />
 )
 
 export default PrepaidCard

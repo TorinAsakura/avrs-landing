@@ -1,12 +1,14 @@
 import React from 'react'
+import { injectIntl } from 'react-intl'
 import { Column, Row, Layout } from 'flex-layouts'
 import { Text, Space } from 'avrs-ui/src/text'
 import { Divider } from 'avrs-ui/src/divider'
 import { Link } from 'avrs-ui/src/link'
 import { Exclusive } from 'avrs-ui/src/promo'
 import PrepaidCard from './PrepaidCard'
+import messages from './messages'
 
-const Products = ({ onRegister }) => (
+const Products = ({ intl, onRegister }) => (
   <Column>
     <Layout grow={1} />
     <Layout basis='900px'>
@@ -33,9 +35,7 @@ const Products = ({ onRegister }) => (
                 <Layout basis='12px' />
                 <Layout>
                   <Text weight='light'>
-                    Основным продуктом компании является уникальное приложение,
-                    которое способно объединить ресурс всех пользователей
-                    и распределить их далее в соответствии с запросами.
+                    {intl.formatMessage(messages.software)}
                   </Text>
                 </Layout>
                 <Layout basis='8px' />
@@ -45,7 +45,7 @@ const Products = ({ onRegister }) => (
                       size='small'
                       color='blue400'
                     >
-                      Регистрация
+                      {intl.formatMessage(messages.registration)}
                     </Text>
                   </Link>
                   <Space />
@@ -85,7 +85,7 @@ const Products = ({ onRegister }) => (
                 <Layout basis='12px' />
                 <Layout>
                   <Text weight='light'>
-                    Для удобства расчёта с нашими клиентами мы предлагаем Aversis Mastercard
+                    {intl.formatMessage(messages.card)}
                   </Text>
                 </Layout>
                 <Layout basis='8px' />
@@ -95,7 +95,7 @@ const Products = ({ onRegister }) => (
                       size='small'
                       color='blue400'
                     >
-                      Регистрация
+                      {intl.formatMessage(messages.registration)}
                     </Text>
                   </Link>
                   <Space />
@@ -118,4 +118,4 @@ const Products = ({ onRegister }) => (
   </Column>
 )
 
-export default Products
+export default injectIntl(Products)

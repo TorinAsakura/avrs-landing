@@ -1,41 +1,30 @@
 pipeline:
   install:
-    image: node:${NODE_VERSION}
+    image: monstrs/node-yarn:7.8
     commands:
-      - npm install
+      - yarn install
 
   lint:
-    image: node:${NODE_VERSION}
+    image: monstrs/node-yarn:7.8
     commands:
-      - npm run lint
+      - yarn run lint
 
   build:
-    image: node:${NODE_VERSION}
+    image: monstrs/node-yarn:7.8
     commands:
-      - npm run build
+      - yarn run build
 
   deps:
-    image: node:${NODE_VERSION}
+    image: monstrs/node-yarn:7.8
     commands:
       - rm -r node_modules
-      - npm install --only=prod
+      - yarn install --production
 
-  docker:
-    image: registry.monstrs.net:5000/drone-docker
+  ecr:
+    image: plugins/ecr
     privileged: true
-    registry: registry.monstrs.net:5000
-    repo: registry.monstrs.net:5000/landing
-    tag: [ "latest" ]
-    environment:
-      - DOCKER_LAUNCH_DEBUG=true
-
-  ssh:
-    image: registry.monstrs.net:5000/drone-ssh
-    host: 193.124.177.25
-    timeout: 30
-    commands:
-      - systemctl restart avrs-landing
-
-matrix:
-  NODE_VERSION:
-    - 7
+    repo: 592851895141.dkr.ecr.eu-central-1.amazonaws.com/landing
+    region: eu-central-1
+    tag:
+      - v0.1.0-${DRONE_BUILD_NUMBER}
+      - latest

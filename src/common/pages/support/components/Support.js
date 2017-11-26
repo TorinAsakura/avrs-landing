@@ -1,4 +1,5 @@
 import React from 'react'
+import { injectIntl } from 'react-intl'
 import { Column, Row, Layout } from 'flex-layouts'
 import { Button, GhostButton } from 'avrs-ui/src/button'
 import { Condition } from 'avrs-ui/src/condition'
@@ -8,9 +9,10 @@ import { Block } from 'avrs-ui/src/content'
 import { Textarea } from 'avrs-ui/src/textarea'
 import { Input } from 'avrs-ui/src/input'
 import { Label } from 'avrs-ui/src/label'
+import messages from './messages'
 
 const Support = ({
-  email, subject, message, errors = {}, router,
+  intl, email, subject, message, errors = {}, router,
   onChangeEmail, onChangeSubject, onChangeMessage, onSend,
 }) => (
   <div style={{ width: '100%', background: '#F3F5F8' }}>
@@ -25,7 +27,7 @@ const Support = ({
                 <Layout basis='20px' />
                 <Layout justify='center'>
                   <Text>
-                    Поддержка
+                    {intl.formatMessage(messages.title)}
                   </Text>
                 </Layout>
                 <Layout basis='20px' />
@@ -40,7 +42,7 @@ const Support = ({
                       <Row>
                         <Layout>
                           <Label>
-                            Email адрес
+                            {intl.formatMessage(messages.email)}
                           </Label>
                         </Layout>
                         <Layout basis='5px' />
@@ -64,7 +66,7 @@ const Support = ({
                         <Layout basis='20px' />
                         <Layout>
                           <Label>
-                            Тема обращения
+                            {intl.formatMessage(messages.subject)}
                           </Label>
                         </Layout>
                         <Layout basis='5px' />
@@ -88,7 +90,7 @@ const Support = ({
                         <Layout basis='20px' />
                         <Layout>
                           <Label>
-                            Пожалуйста, опишите вашу проблему
+                            {intl.formatMessage(messages.message)}
                           </Label>
                         </Layout>
                         <Layout basis='5px' />
@@ -120,7 +122,7 @@ const Support = ({
                                 shadow
                                 onClick={router.goBack}
                               >
-                                Отмена
+                                {intl.formatMessage(messages.cancel)}
                               </GhostButton>
                             </Layout>
                             <Layout basis='15px' />
@@ -131,7 +133,7 @@ const Support = ({
                                 shadow
                                 onClick={onSend}
                               >
-                                Отправить
+                                {intl.formatMessage(messages.send)}
                               </Button>
                             </Layout>
                             <Layout grow={1} />
@@ -154,4 +156,4 @@ const Support = ({
   </div>
 )
 
-export default Support
+export default injectIntl(Support)

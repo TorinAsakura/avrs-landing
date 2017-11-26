@@ -1,35 +1,28 @@
-import { connect } from 'react-redux'
-import { register } from '../../../actions'
-import ServicePlans from '../components/ServicePlans'
+import React from 'react'
+import { Column, Row, Layout } from 'flex-layouts'
+import SelectRate from './SelectRate'
+import Rates from './Rates'
 
-const periodByDays = {
-  30: 'month',
-  90: 'quarter',
-  180: 'halfYear',
-  365: 'year',
-}
+const ServicePlans = () => (
+  <div style={{ width: '100%', background: '#F3F5F8' }}>
+    <Column>
+      <Layout grow={1} />
+      <Layout basis='924px'>
+        <Row>
+          <Layout basis='40px' />
+          <Layout>
+            <SelectRate />
+          </Layout>
+          <Layout basis='20px' />
+          <Layout>
+            <Rates />
+          </Layout>
+          <Layout basis='40px' />
+        </Row>
+      </Layout>
+      <Layout grow={1} />
+    </Column>
+  </div>
+)
 
-const groupByType = (items) => { // eslint-disable-line arrow-body-style
-  return items.reduce((result, plan) => {
-    const type = plan.type
-
-    if (!result[type]) {
-      result[type] = {} // eslint-disable-line no-param-reassign
-    }
-
-    return {
-      ...result,
-      [type]: {
-        ...result[type],
-        [periodByDays[plan.period]]: plan,
-      },
-    }
-  }, {})
-}
-
-export default connect(
-  state => groupByType(state.servicePlans.items),
-  () => ({
-    onRegister: () => register(),
-  }),
-)(ServicePlans)
+export default ServicePlans

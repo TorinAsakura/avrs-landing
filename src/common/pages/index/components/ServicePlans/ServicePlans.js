@@ -1,15 +1,17 @@
 import React from 'react'
+import { injectIntl } from 'react-intl'
 import { Column, Row, Layout } from 'flex-layouts'
 import { Text } from 'avrs-ui/src/text'
 import { Section } from 'avrs-ui/src/section'
-import { PromoServicePlan } from 'avrs-ui/src/ServicePlans'
 import Calculator from './Calculator'
+import Plans from './Plans'
+import messages from './messages'
 
-const ServicePlans = ({ active, period, basis, standart, premium, business, onChangePlan, onChangePeriod }) => (
+const ServicePlans = ({ intl, active, period, basis, standart, premium, business, onChangePlan, onChangePeriod }) => (
   <Section id='service-plans'>
     <Column>
       <Layout grow={1} />
-      <Layout basis='875px'>
+      <Layout basis='900px'>
         <Row>
           <Layout basis='100px' />
           <Layout>
@@ -20,7 +22,7 @@ const ServicePlans = ({ active, period, basis, standart, premium, business, onCh
                   size='large'
                   color='black400'
                 >
-                  Самостоятельный выбор лицензии
+                  {intl.formatMessage(messages.title)}
                 </Text>
               </Layout>
               <Layout grow={1} />
@@ -37,9 +39,7 @@ const ServicePlans = ({ active, period, basis, standart, premium, business, onCh
                   align='center'
                   lineHeight='extended'
                 >
-                  Минимальное время нахождения компьютера,
-                  подключенного к программе Aversis в сети,
-                  напрямую зависит от приобретенного пакета.
+                  {intl.formatMessage(messages.message)}
                 </Text>
               </Layout>
               <Layout grow={1} />
@@ -47,43 +47,14 @@ const ServicePlans = ({ active, period, basis, standart, premium, business, onCh
           </Layout>
           <Layout basis='65px' />
           <Layout>
-            <Column>
-              <Layout basis='200px'>
-                <PromoServicePlan
-                  active={active.type === 'basis'}
-                  name='Базис'
-                  {...basis}
-                  onClick={() => onChangePlan('basis')}
-                />
-              </Layout>
-              <Layout basis='25px' />
-              <Layout basis='200px'>
-                <PromoServicePlan
-                  active={active.type === 'standart'}
-                  name='Стандарт'
-                  {...standart}
-                  onClick={() => onChangePlan('standart')}
-                />
-              </Layout>
-              <Layout basis='25px' />
-              <Layout basis='200px'>
-                <PromoServicePlan
-                  active={active.type === 'premium'}
-                  name='Премиум'
-                  {...premium}
-                  onClick={() => onChangePlan('premium')}
-                />
-              </Layout>
-              <Layout basis='25px' />
-              <Layout basis='200px'>
-                <PromoServicePlan
-                  active={active.type === 'business'}
-                  name='Бизнес'
-                  {...business}
-                  onClick={() => onChangePlan('business')}
-                />
-              </Layout>
-            </Column>
+            <Plans
+              active={active}
+              basis={basis}
+              standart={standart}
+              premium={premium}
+              business={business}
+              onChangePlan={onChangePlan}
+            />
           </Layout>
           <Layout basis='70px' />
           <Layout>
@@ -94,7 +65,7 @@ const ServicePlans = ({ active, period, basis, standart, premium, business, onCh
                   size='large'
                   color='gray200'
                 >
-                  Ваш заработок:
+                  {intl.formatMessage(messages.income)}
                 </Text>
               </Layout>
               <Layout basis='300px'>
@@ -115,4 +86,4 @@ const ServicePlans = ({ active, period, basis, standart, premium, business, onCh
   </Section>
 )
 
-export default ServicePlans
+export default injectIntl(ServicePlans)

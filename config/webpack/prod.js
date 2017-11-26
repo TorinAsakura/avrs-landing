@@ -1,19 +1,31 @@
 import path from 'path'
 import webpack from 'webpack'
-import nested from 'jss-nested'
-import camelCase from 'jss-camel-case'
+import jssGlobal from 'jss-global'
+import jssNested from 'jss-nested'
+import jssCamelCase from 'jss-camel-case'
 import autoprefixer from 'autoprefixer'
+import AssetsPlugin from 'assets-webpack-plugin'
+import CopyWebpackPlugin from 'copy-webpack-plugin'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import CssResolvePlugin from 'elementum-tools/lib/webpack/css-resolve-plugin'
+import SitemapPlugin from 'sitemap-webpack-plugin'
+import sitemapPaths from './sitemap'
 
-export const entry = [
-  'babel-polyfill',
-  './src/client/index.js',
-]
+export const entry = {
+  desktop: [
+    'babel-polyfill',
+    './src/client/desktop.js',
+  ],
+  phone: [
+    'babel-polyfill',
+    './src/client/phone.js',
+  ],
+}
 
 export const output = {
-  path: path.join(__dirname, '..', '..', 'public'),
-  filename: 'index.js',
+  path: path.join(__dirname, '../../build'),
+  filename: '[name].[hash].js',
+  publicPath: '/',
 }
 
 export const module = {
@@ -42,9 +54,9 @@ export const module = {
     },
     {
       test: /\.css$/,
-      loader: ExtractTextPlugin.extract({
-        fallbackLoader: 'style-loader',
-        loader: [
+      use: ExtractTextPlugin.extract({
+        fallback: 'style-loader',
+        use: [
           'css-loader',
           'postcss-loader',
         ],
@@ -52,9 +64,9 @@ export const module = {
     },
     {
       test: /\.jss$/,
-      loader: ExtractTextPlugin.extract({
-        fallbackLoader: 'style-loader',
-        loader: [
+      use: ExtractTextPlugin.extract({
+        fallback: 'style-loader',
+        use: [
           'css-loader',
           'postcss-loader',
           'jss-loader',
@@ -63,7 +75,11 @@ export const module = {
     },
     {
       test: /\.(png|jpg|svg|ttf|eot|woff|woff2)$/,
-      loader: 'file-loader?name=/[name].[ext]',
+      loader: 'file-loader?name=[name].[ext]',
+    },
+    {
+      test: /\.po$/,
+      loader: path.join(__dirname, 'loader/po-loader.js'),
     },
   ],
 }
@@ -75,7 +91,10 @@ export const resolve = {
 }
 
 export const plugins = [
-  new ExtractTextPlugin('index.css'),
+  new AssetsPlugin({
+    path: path.join(__dirname, '../../build'),
+  }),
+  new ExtractTextPlugin('[name].[hash].css'),
   new webpack.DefinePlugin({
     'process.env.NODE_ENV': JSON.stringify('production'),
   }),
@@ -84,8 +103,9 @@ export const plugins = [
     options: {
       jssLoader: {
         plugins: [
-          nested(),
-          camelCase(),
+          jssGlobal(),
+          jssNested(),
+          jssCamelCase(),
         ],
       },
       postcss: {
@@ -98,4 +118,11 @@ export const plugins = [
       },
     },
   }),
+  new CopyWebpackPlugin([
+    {
+      from: path.join(__dirname, '../../public'),
+      to: path.join(__dirname, '../../build'),
+    },
+  ]),
+  new SitemapPlugin('https://aversis.net', sitemapPaths),
 ]

@@ -1,8 +1,32 @@
 import React from 'react'
+import { defineMessages, injectIntl, FormattedMessage } from 'react-intl'
 import { StyleSheet } from 'elementum'
 import { Row, Layout } from 'flex-layouts'
-import { Text, Space } from 'avrs-ui/src/text'
+import { Text } from 'avrs-ui/src/text'
 import { PointerLink, RouteLink } from 'avrs-ui/src/link'
+
+const messages = defineMessages({
+  company: {
+    id: 'legal_information.summary.company',
+    defaultMessage: 'Компания',
+  },
+  termOfUse: {
+    id: 'legal_information.summary.term_of_use',
+    defaultMessage: 'Условия использования',
+  },
+  confidentiality: {
+    id: 'legal_information.summary.confidentiality',
+    defaultMessage: 'Конфиденциальность',
+  },
+  info: {
+    id: 'legal_information.summary.info',
+    defaultMessage: 'Для получения дополнительной информации или справки посетите страницу {support} Aversis.',
+  },
+  support: {
+    id: 'legal_information.summary.support',
+    defaultMessage: 'службы поддержки',
+  },
+})
 
 const styles = StyleSheet.create({
   self: {
@@ -19,55 +43,48 @@ const styles = StyleSheet.create({
   },
 })
 
-const Summary = () => (
+const Summary = ({ intl }) => (
   <div className={styles()}>
     <Row fill>
       <Layout>
         <PointerLink to='/legal-information/company'>
-          Компания
-        </PointerLink>
-      </Layout>
-      <Layout>
-        <PointerLink to='/legal-information/terms-of-use'>
-          Условия использования
+          {intl.formatMessage(messages.company)}
         </PointerLink>
       </Layout>
       <Layout>
         <PointerLink to='/legal-information/confidentiality'>
-          Конфиденциальность
+          {intl.formatMessage(messages.confidentiality)}
         </PointerLink>
       </Layout>
       <Layout basis='140px' />
       <Layout>
-        <div>
-          <Text
-            size='small'
-            color='gray250'
-            weight='light'
-          >
-            Для получения дополнительной информации или справки посетите страницу
-          </Text>
-          <RouteLink to='/support'>
-            <Text
-              size='small'
-              color='blue400'
-              weight='light'
-            >
-              службы поддержки
-            </Text>
-          </RouteLink>
-          <Space />
-          <Text
-            size='small'
-            color='gray250'
-            weight='light'
-          >
-            Aversis.
-          </Text>
-        </div>
+        <Text
+          size='small'
+          color='gray250'
+          weight='light'
+          lineHeight='extended'
+        >
+          <FormattedMessage
+            {...messages.info}
+            values={{
+              support: (
+                <RouteLink to='/support'>
+                  <Text
+                    size='small'
+                    color='blue400'
+                    weight='light'
+                    lineHeight='extended'
+                  >
+                    {intl.formatMessage(messages.support)}
+                  </Text>
+                </RouteLink>
+              ),
+            }}
+          />
+        </Text>
       </Layout>
     </Row>
   </div>
 )
 
-export default Summary
+export default injectIntl(Summary)

@@ -1,18 +1,83 @@
 import React from 'react'
+import moment from 'moment'
+import { defineMessages, injectIntl } from 'react-intl'
 import { Column, Row, Layout } from 'flex-layouts'
 import { Link, RouteLink } from 'avrs-ui/src/link'
 import { Text } from 'avrs-ui/src/text'
 import { Section } from 'avrs-ui/src/section'
 import { LogoWhiteMonoWithText } from 'avrs-ui/src/logo'
 
-const Footer = ({ onRegister }) => (
+const messages = defineMessages({
+  main: {
+    id: 'nav.main',
+    defaultMessage: 'Главная',
+  },
+  about: {
+    id: 'nav.about',
+    defaultMessage: 'О продукте',
+  },
+  capabilities: {
+    id: 'nav.capabilities',
+    defaultMessage: 'Возможности',
+  },
+  rates: {
+    id: 'nav.rates',
+    defaultMessage: 'Тарифы',
+  },
+  news: {
+    id: 'nav.news',
+    defaultMessage: 'Новости',
+  },
+  support: {
+    id: 'nav.support',
+    defaultMessage: 'Поддержка',
+  },
+  termOfUse: {
+    id: 'nav.term_of_use',
+    defaultMessage: 'Условия использования',
+  },
+  confidentiality: {
+    id: 'nav.confidentiality',
+    defaultMessage: 'Конфиденциальность',
+  },
+  company: {
+    id: 'nav.company',
+    defaultMessage: 'Юридическая инф.',
+  },
+  products: {
+    id: 'nav.products',
+    defaultMessage: 'Продукты',
+  },
+  materials: {
+    id: 'nav.materials',
+    defaultMessage: 'Материалы',
+  },
+  login: {
+    id: 'nav.login',
+    defaultMessage: 'Войти',
+  },
+  join: {
+    id: 'nav.join',
+    defaultMessage: 'Стать участником',
+  },
+  menu: {
+    id: 'footer.menu',
+    defaultMessage: 'Меню',
+  },
+  other: {
+    id: 'footer.other',
+    defaultMessage: 'Другое',
+  },
+})
+
+const Footer = ({ intl, newsPreview, onRegister }) => (
   <Section color='black'>
     <Row>
       <Layout basis='40px' />
       <Layout basis='200px'>
         <Column>
           <Layout grow={1} />
-          <Layout basis='300px'>
+          <Layout basis='400px'>
             <Row>
               <Layout>
                 <Text
@@ -20,17 +85,19 @@ const Footer = ({ onRegister }) => (
                   size='small'
                   weight='bold'
                 >
-                  НОВОСТИ
+                  {intl.formatMessage(messages.news).toLowerCase()}
                 </Text>
               </Layout>
               <Layout basis='30px' />
               <Layout>
-                <Text
-                  color='white'
-                  size='small'
-                >
-                  Запуск тестовой версии
-                </Text>
+                <RouteLink to={`news/${newsPreview.slug}`}>
+                  <Text
+                    color='white'
+                    size='small'
+                  >
+                    {newsPreview.title}
+                  </Text>
+                </RouteLink>
               </Layout>
               <Layout basis='8px' />
               <Layout>
@@ -39,8 +106,7 @@ const Footer = ({ onRegister }) => (
                   color='gray200'
                   lineHeight='extended'
                 >
-                  По большому счету, практически каждый из нас не использует
-                  потенциал своего компьютера на полную ... Читать далее
+                  {newsPreview.shortDescription}
                 </Text>
               </Layout>
               <Layout basis='30px' />
@@ -54,7 +120,7 @@ const Footer = ({ onRegister }) => (
                   weight='light'
                   size='small'
                 >
-                  Aversis © 2016
+                  Aversis © {moment().format('YYYY')}
                 </Text>
               </Layout>
             </Row>
@@ -68,7 +134,7 @@ const Footer = ({ onRegister }) => (
                   color='gray200'
                   weight='bold'
                 >
-                  МЕНЮ
+                  {intl.formatMessage(messages.menu).toLowerCase()}
                 </Text>
               </Layout>
               <Layout basis='30px' />
@@ -78,7 +144,7 @@ const Footer = ({ onRegister }) => (
                     size='xsmall'
                     color='white'
                   >
-                    О продукте
+                    {intl.formatMessage(messages.about)}
                   </Text>
                 </RouteLink>
               </Layout>
@@ -89,7 +155,7 @@ const Footer = ({ onRegister }) => (
                     size='xsmall'
                     color='white'
                   >
-                    Возможности
+                    {intl.formatMessage(messages.capabilities)}
                   </Text>
                 </RouteLink>
               </Layout>
@@ -100,7 +166,7 @@ const Footer = ({ onRegister }) => (
                     size='xsmall'
                     color='white'
                   >
-                    Тарифы
+                    {intl.formatMessage(messages.rates)}
                   </Text>
                 </RouteLink>
               </Layout>
@@ -111,7 +177,7 @@ const Footer = ({ onRegister }) => (
                     size='xsmall'
                     color='white'
                   >
-                    Поддержка
+                    {intl.formatMessage(messages.support)}
                   </Text>
                 </RouteLink>
               </Layout>
@@ -122,7 +188,7 @@ const Footer = ({ onRegister }) => (
                     size='xsmall'
                     color='white'
                   >
-                    Стать участником
+                    {intl.formatMessage(messages.join)}
                   </Text>
                 </Link>
               </Layout>
@@ -136,28 +202,17 @@ const Footer = ({ onRegister }) => (
                   color='gray200'
                   weight='bold'
                 >
-                  ДРУГОЕ
+                  {intl.formatMessage(messages.other).toLowerCase()}
                 </Text>
               </Layout>
               <Layout basis='30px' />
-              <Layout>
-                <RouteLink to='/legal-information/terms-of-use'>
-                  <Text
-                    size='xsmall'
-                    color='white'
-                  >
-                    Условия использования
-                  </Text>
-                </RouteLink>
-              </Layout>
-              <Layout basis='4px' />
               <Layout>
                 <RouteLink to='/legal-information/confidentiality'>
                   <Text
                     size='xsmall'
                     color='white'
                   >
-                    Конфиденциальность
+                    {intl.formatMessage(messages.confidentiality)}
                   </Text>
                 </RouteLink>
               </Layout>
@@ -168,7 +223,7 @@ const Footer = ({ onRegister }) => (
                     size='xsmall'
                     color='white'
                   >
-                    Материалы
+                    {intl.formatMessage(messages.materials)}
                   </Text>
                 </RouteLink>
               </Layout>
@@ -179,7 +234,7 @@ const Footer = ({ onRegister }) => (
                     size='xsmall'
                     color='white'
                   >
-                    Юридическая инф.
+                    {intl.formatMessage(messages.company)}
                   </Text>
                 </RouteLink>
               </Layout>
@@ -193,4 +248,4 @@ const Footer = ({ onRegister }) => (
   </Section>
 )
 
-export default Footer
+export default injectIntl(Footer)
